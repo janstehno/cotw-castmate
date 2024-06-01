@@ -1,0 +1,29 @@
+[
+    {
+        "ID": "HABITAT:DEEP_LAKE"
+    }, {
+    "ID": "HABITAT:DEEP_POND"
+}, {
+    "ID": "HABITAT:LAKE_SHORE"
+}, {
+    "ID": "HABITAT:LOW_STREAM"
+}, {
+    "ID": "HABITAT:MIDDLE_RIVER"
+}, {
+    "ID": "HABITAT:MIDDLE_STREAM"
+}, {
+    "ID": "HABITAT:RIVER_MOUTH"
+}, {
+    "ID": "HABITAT:SHALLOW_LAKE"
+}, {
+    "ID": "HABITAT:SHALLOW_POND"
+}, {
+    "ID": "HABITAT:UPRIVER"
+}, {
+    "ID": "HABITAT:UPSTREAM"
+}, {
+    "ID": "HABITAT:WETLAND_POND"
+}, {
+    "ID": "HABITAT:WETLAND_RIVER"
+}
+]

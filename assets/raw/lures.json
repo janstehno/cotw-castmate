@@ -1,0 +1,63 @@
+[
+    {
+        "ID": "LURE:CRANKBAIT",
+        "TECHNIQUE": [
+            1, 0, 1, 0
+        ]
+    }, {
+    "ID": "LURE:FROG",
+    "TECHNIQUE": [
+        0, 0, 1, 0
+    ]
+}, {
+    "ID": "LURE:GRUB",
+    "TECHNIQUE": [
+        1, 0, 1, 1
+    ]
+}, {
+    "ID": "LURE:JERKBAIT",
+    "TECHNIQUE": [
+        1, 1, 1, 0
+    ]
+}, {
+    "ID": "LURE:POPPER",
+    "TECHNIQUE": [
+        0, 0, 1, 0
+    ]
+}, {
+    "ID": "LURE:SHAD",
+    "TECHNIQUE": [
+        1, 1, 1, 1
+    ]
+}, {
+    "ID": "LURE:SPINNER",
+    "TECHNIQUE": [
+        1, 0, 0, 0
+    ]
+}, {
+    "ID": "LURE:SPINNERBAIT",
+    "TECHNIQUE": [
+        1, 1, 1, 0
+    ]
+}, {
+    "ID": "LURE:SPOON",
+    "TECHNIQUE": [
+        1, 0, 0, 0
+    ]
+}, {
+    "ID": "LURE:SWIMBAIT",
+    "TECHNIQUE": [
+        1, 1, 1, 0
+    ]
+}, {
+    "ID": "LURE:TUBE",
+    "TECHNIQUE": [
+        0, 0, 1, 1
+    ]
+}, {
+    "ID": "LURE:WORM",
+    "TECHNIQUE": [
+        0, 0, 0, 1
+    ]
+}
+]
