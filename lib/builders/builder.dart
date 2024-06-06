@@ -1,10 +1,8 @@
 import 'package:cotwcastmate/generated/assets.gen.dart';
 import 'package:cotwcastmate/interface/interface.dart';
-import 'package:cotwcastmate/interface/values.dart';
 import 'package:cotwcastmate/widgets/app/error.dart';
-import 'package:cotwcastmate/widgets/app/padding.dart';
+import 'package:cotwcastmate/widgets/indicator/loading_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 abstract class BuilderBuilder extends StatefulWidget {
   final String _builderId;
@@ -42,23 +40,6 @@ abstract class BuilderBuilderState extends State<BuilderBuilder> {
     );
   }
 
-  Widget _buildLoadingSpinKit() {
-    return WidgetPadding.a30(
-      child: SpinKitFadingCircle(
-        size: Values.tapSize,
-        itemBuilder: (context, i) {
-          return Container(
-            margin: const EdgeInsets.only(left: 1.5, right: 1.5),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100),
-              color: Interface.primary,
-            ),
-          );
-        },
-      ),
-    );
-  }
-
   Widget _buildShadow() {
     return Container(
       color: Interface.primaryDark.withOpacity(0.4),
@@ -77,10 +58,10 @@ abstract class BuilderBuilderState extends State<BuilderBuilder> {
               children: [
                 _buildLoadingBackground(),
                 _buildShadow(),
-                Positioned(
+                const Positioned(
                   right: 0,
                   bottom: 0,
-                  child: _buildLoadingSpinKit(),
+                  child: WidgetLoadingIndicator(),
                 ),
               ],
             ),

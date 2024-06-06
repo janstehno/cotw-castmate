@@ -27,6 +27,9 @@ class BuilderHome extends BuilderBuilder {
 
 class BuilderHomeState extends BuilderBuilderState {
   @override
+  buildFutureWidget(BuildContext context) => const ActivityHome();
+
+  @override
   void initializeData(AsyncSnapshot<Map<String, dynamic>> snapshot, BuildContext context) {
     Set<Reserve> reserves = snapshot.data!["reserves"] ?? [];
     Set<Habitat> habitats = snapshot.data!["habitats"] ?? [];
@@ -82,10 +85,4 @@ class BuilderHomeState extends BuilderBuilderState {
     await Future.delayed(const Duration(seconds: 1), () {});
     return loadedData;
   }
-
-  @override
-  buildFutureWidget(BuildContext context) => const ActivityHome();
 }
-
-/*Set<Reserve> reserves = snapshot.data!.elementAt(0);
-*/
