@@ -10,9 +10,9 @@ class Values {
   static const double entry = 80;
   static const double title = 70;
   static const double subtitle = 65;
-  static const double section = 60;
   static const double menu = 35;
 
+  static const double dotSize = 7;
   static const double tapSize = 35;
   static const double iconSize = 20;
   static const double indicatorSize = 20;
@@ -20,4 +20,7 @@ class Values {
   static const double smallLineHeight = 1;
   static const double normalLineHeight = 1.5;
   static const double bigLineHeight = 1;
+
+  static const int commonHabitatCount = 4;
+  static const int commonHookCount = 4;
 }

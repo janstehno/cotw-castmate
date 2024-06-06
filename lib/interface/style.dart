@@ -67,7 +67,11 @@ class $StyleNormalSize16 {
         height: Values.normalLineHeight,
       );
 
+  TextStyle get w400i => w400.copyWith(fontStyle: FontStyle.italic);
+
   TextStyle get w600 => w400.copyWith(fontWeight: FontWeight.w600);
+
+  TextStyle get w600l2 => w400.copyWith(fontWeight: FontWeight.w600, letterSpacing: 2);
 }
 
 class $StyleNormalSize20 {
