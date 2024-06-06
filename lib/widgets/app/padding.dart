@@ -43,6 +43,17 @@ class WidgetPadding extends StatelessWidget {
         _padding = EdgeInsets.fromLTRB(left, top, right, bottom),
         _child = child;
 
+  WidgetPadding.h(
+    double padding, {
+    super.key,
+    Color? background,
+    Alignment? alignment,
+    required Widget child,
+  })  : _background = background,
+        _alignment = alignment,
+        _padding = EdgeInsets.symmetric(horizontal: padding),
+        _child = child;
+
   const WidgetPadding.a30({
     super.key,
     Color? background,
@@ -80,7 +91,8 @@ class WidgetPadding extends StatelessWidget {
   Color get background => _background ?? Interface.transparent;
 
   Widget _buildWidgets() {
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
       color: background,
       alignment: alignment,
       padding: padding,

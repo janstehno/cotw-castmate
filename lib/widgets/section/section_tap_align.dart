@@ -13,12 +13,13 @@ class WidgetSectionTapAlign extends WidgetSectionTap {
   const WidgetSectionTapAlign(
     super.text, {
     super.key,
+    Color? background,
     bool indicatorRight = true,
     required bool active,
     required super.onTap,
   })  : _indicatorRight = indicatorRight,
         _active = active,
-        super(background: Interface.transparent);
+        super(background: background ?? Interface.transparent);
 
   Widget _buildText() {
     return Container(
@@ -28,13 +29,14 @@ class WidgetSectionTapAlign extends WidgetSectionTap {
         color: Interface.primaryLight,
         style: Style.normal.s16.w400,
         textAlign: _indicatorRight ? TextAlign.end : TextAlign.start,
+        autoSize: false,
       ),
     );
   }
 
   @override
   Widget buildCenter() {
-    return WidgetPadding.h30(
+    return WidgetPadding.h30v20(
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: _indicatorRight ? MainAxisAlignment.end : MainAxisAlignment.start,

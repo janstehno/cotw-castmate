@@ -19,7 +19,6 @@ class WidgetSectionMenu extends WidgetSectionTap {
   })  : _icon = icon,
         super(background: Interface.transparent);
 
-  @override
   double get height => Values.menu;
 
   Widget _buildIcon() {
@@ -43,13 +42,16 @@ class WidgetSectionMenu extends WidgetSectionTap {
 
   @override
   Widget buildCenter() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        WidgetMargin.right(20, child: _buildIcon()),
-        Expanded(child: _buildText()),
-      ],
+    return SizedBox(
+      height: height,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          WidgetMargin.right(20, child: _buildIcon()),
+          Expanded(child: _buildText()),
+        ],
+      ),
     );
   }
 }
