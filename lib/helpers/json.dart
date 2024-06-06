@@ -158,7 +158,7 @@ class HelperJSON {
     }
   }
 
-  static Map<String, double> getTackleEffectiveness(Fish fish, Reserve reserve, TackleType tackleType) {
+  static Future<Map<String, double>> getTackleEffectiveness(Fish fish, Reserve reserve, TackleType tackleType) async {
     Map<String, double> effectiveness = {};
 
     Set<Fish> reserveFish = _getFilteredReserveFish(fish, reserve);

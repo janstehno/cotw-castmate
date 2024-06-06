@@ -172,7 +172,7 @@ class DetailFish extends StatelessWidget {
 
   Widget _buildPageIndicator(int length) {
     return WidgetMargin.bottom(
-      20,
+      25,
       child: WidgetPageIndicator(
         length,
         height: Values.dotSize,
@@ -186,7 +186,7 @@ class DetailFish extends StatelessWidget {
   Widget _buildReserve(String reserve) {
     return WidgetMargin.fromLTRB(
       0,
-      15,
+      20,
       0,
       5,
       child: WidgetPadding.h30(

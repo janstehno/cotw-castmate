@@ -33,4 +33,6 @@ abstract class FishTackle {
         throw UnimplementedError();
     }
   }
+
+  static Comparator<FishTackle> sortByStrength = (a, b) => 0;
 }
