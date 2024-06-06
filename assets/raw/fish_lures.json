@@ -716,19 +716,19 @@
     "LURE": "LURE:TUBE",
     "STRENGTH": 1
 }, {
-    "FISH": "FISH:LEUCISCUSUS",
+    "FISH": "FISH:LEUCISCUS_IDUS",
     "LURE": "LURE:GRUB",
     "STRENGTH": 2
 }, {
-    "FISH": "FISH:LEUCISCUSUS",
+    "FISH": "FISH:LEUCISCUS_IDUS",
     "LURE": "LURE:SPINNER",
     "STRENGTH": 1
 }, {
-    "FISH": "FISH:LEUCISCUSUS",
+    "FISH": "FISH:LEUCISCUS_IDUS",
     "LURE": "LURE:TUBE",
     "STRENGTH": 2
 }, {
-    "FISH": "FISH:LEUCISCUSUS",
+    "FISH": "FISH:LEUCISCUS_IDUS",
     "LURE": "LURE:WORM",
     "STRENGTH": 2
 }, {
