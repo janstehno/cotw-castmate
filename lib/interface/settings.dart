@@ -12,17 +12,20 @@ class Settings extends ChangeNotifier {
 
   late int _language;
   late bool _imperialUnits;
+  late bool _tackleEffectiveness;
   late SharedPreferences _sharedPreferences;
 
   Settings({
     required language,
     required imperialUnits,
-  }) {
-    _language = language;
-    _imperialUnits = imperialUnits;
-  }
+    required tackleEffectiveness,
+  })  : _language = language,
+        _imperialUnits = imperialUnits,
+        _tackleEffectiveness = tackleEffectiveness;
 
   bool get imperialUnits => _imperialUnits;
+
+  bool get tackleEffectiveness => _tackleEffectiveness;
 
   int get language => _language;
 
@@ -32,6 +35,13 @@ class Settings extends ChangeNotifier {
 
   String getLocaleName(int i) => _languages[i];
 
+  Future<void> changeLanguage(int languageId) async {
+    _sharedPreferences = await SharedPreferences.getInstance();
+    _language = languageId;
+    await _sharedPreferences.setInt("language", languageId);
+    notifyListeners();
+  }
+
   Future<void> changeUnits(bool imperialUnits) async {
     _sharedPreferences = await SharedPreferences.getInstance();
     _imperialUnits = imperialUnits;
@@ -39,10 +49,10 @@ class Settings extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> changeLanguage(int languageId) async {
+  Future<void> changeTackleEffectiveness() async {
     _sharedPreferences = await SharedPreferences.getInstance();
-    _language = languageId;
-    await _sharedPreferences.setInt("language", languageId);
+    _tackleEffectiveness = !_tackleEffectiveness;
+    await _sharedPreferences.setBool("tackleEffectiveness", _tackleEffectiveness);
     notifyListeners();
   }
 }

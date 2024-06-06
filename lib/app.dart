@@ -16,6 +16,7 @@ void main() async {
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
   int language = sharedPreferences.getInt("language") ?? 0;
   bool imperialUnits = sharedPreferences.getBool("imperialUnits") ?? false;
+  bool tackleEffectiveness = sharedPreferences.getBool("tackleEffectiveness") ?? false;
   runApp(
     EasyLocalization(
       path: "assets/translations",
@@ -28,6 +29,7 @@ void main() async {
         create: (BuildContext context) => Settings(
           language: language,
           imperialUnits: imperialUnits,
+          tackleEffectiveness: tackleEffectiveness,
         ),
         child: const App(),
       ),

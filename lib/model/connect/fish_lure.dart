@@ -1,39 +1,13 @@
 import 'package:cotwcastmate/helpers/json.dart';
-import 'package:cotwcastmate/interface/interface.dart';
+import 'package:cotwcastmate/model/connect/fish_tackle.dart';
 import 'package:cotwcastmate/model/translatables/lure.dart';
-import 'package:flutter/material.dart';
 
-class FishLure {
-  final String _fish;
-  final String _lure;
-  final int _strength;
-
+class FishLure extends FishTackle {
   FishLure({
-    required String fish,
+    required super.fish,
     required String lure,
-    required int strength,
-  })  : _fish = fish,
-        _lure = lure,
-        _strength = strength;
-
-  String get fish => _fish;
-
-  String get lure => _lure;
-
-  int get strength => _strength;
-
-  Color strengthColor() {
-    switch (_strength) {
-      case 1:
-        return Interface.bronze;
-      case 2:
-        return Interface.silver;
-      case 3:
-        return Interface.gold;
-      default:
-        throw UnimplementedError();
-    }
-  }
+    required super.strength,
+  }) : super(tackle: lure);
 
   factory FishLure.fromJson(Map<String, dynamic> json) {
     return FishLure(
@@ -48,8 +22,8 @@ class FishLure {
   };
 
   static Comparator<FishLure> sortByTechniqueStrength = (a, b) {
-    Lure s = HelperJSON.getLure(a.lure);
-    Lure t = HelperJSON.getLure(b.lure);
+    Lure s = HelperJSON.getLure(a.tackle);
+    Lure t = HelperJSON.getLure(b.tackle);
 
     if (a.strength == b.strength) return t.techniqueCount.compareTo(s.techniqueCount);
     return b.strength.compareTo(a.strength);

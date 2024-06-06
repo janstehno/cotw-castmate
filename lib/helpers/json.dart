@@ -1,10 +1,15 @@
 import 'dart:convert';
+import 'dart:math';
 
+import 'package:collection/collection.dart';
 import 'package:cotwcastmate/generated/assets.gen.dart';
+import 'package:cotwcastmate/interface/values.dart';
+import 'package:cotwcastmate/miscellaneous/enums.dart';
 import 'package:cotwcastmate/model/connect/fish_bait.dart';
 import 'package:cotwcastmate/model/connect/fish_hook.dart';
 import 'package:cotwcastmate/model/connect/fish_lure.dart';
 import 'package:cotwcastmate/model/connect/fish_reserve.dart';
+import 'package:cotwcastmate/model/connect/fish_tackle.dart';
 import 'package:cotwcastmate/model/hook.dart';
 import 'package:cotwcastmate/model/translatables/bait.dart';
 import 'package:cotwcastmate/model/translatables/fish.dart';
@@ -104,6 +109,15 @@ class HelperJSON {
     return fishLures.where((e) => e.fish == fishId).toSet();
   }
 
+  static Set<FishTackle> _getFishTackles(String fishId, TackleType tackleType) {
+    switch (tackleType) {
+      case TackleType.bait:
+        return getFishBaits(fishId);
+      case TackleType.lure:
+        return getFishLures(fishId);
+    }
+  }
+
   static Habitat getHabitat(String id) {
     try {
       return habitats.firstWhere((e) => e.id == id);
@@ -142,6 +156,79 @@ class HelperJSON {
     } catch (e) {
       throw Exception("Hook with ID: $id does not exist");
     }
+  }
+
+  static Map<String, double> getTackleEffectiveness(Fish fish, Reserve reserve, TackleType tackleType) {
+    Map<String, double> effectiveness = {};
+
+    Set<Fish> reserveFish = _getFilteredReserveFish(fish, reserve);
+    Set<FishTackle> tackles = _getFishTackles(fish.id, tackleType);
+
+    for (FishTackle tackle in tackles) {
+      Set<Fish> relevantFish = _getRelevantFishForTackle(reserveFish, tackle, tackleType);
+      double totalEffectivenessWeight = _calculateTotalEffectivenessWeight(relevantFish, tackle, tackleType);
+      effectiveness[tackle.tackle] = totalEffectivenessWeight;
+    }
+
+    double totalSum = effectiveness.values.reduce((a, b) => a + b);
+    effectiveness.updateAll((key, value) => (value / totalSum) * 100);
+    return effectiveness;
+  }
+
+  static Set<Fish> _getFilteredReserveFish(Fish fish, Reserve reserve) {
+    Set<String> habitats = fish.habitats.map((e) => e.toString()).toSet();
+    Set<Fish> reserveFish = HelperJSON.getReserveFish(reserve.id);
+    reserveFish.removeWhere((e) => e.id == fish.id);
+    reserveFish.removeWhere((e) {
+      return e.habitats.where((h) => habitats.contains(h)).length < min(habitats.length, Values.commonHabitatCount);
+    });
+
+    Set<Hook> hooks = HelperJSON.getFishHooks(fish.id).map((e) => HelperJSON.getHook(e.hook)).toSet();
+    reserveFish.removeWhere((e) {
+      Set<Hook> fishHooks = HelperJSON.getFishHooks(e.id).map((e) => HelperJSON.getHook(e.hook)).toSet();
+      int commonHookCount = fishHooks.where((e) => hooks.contains(e)).length;
+      return commonHookCount < min(hooks.length, Values.commonHookCount);
+    });
+
+    return reserveFish;
+  }
+
+  static Set<Fish> _getRelevantFishForTackle(Set<Fish> reserveFish, FishTackle tackle, TackleType tackleType) {
+    return reserveFish.where((fish) {
+      switch (tackleType) {
+        case TackleType.bait:
+          return HelperJSON.getFishBaits(fish.id).any((fb) => fb.tackle == tackle.tackle);
+        case TackleType.lure:
+          return HelperJSON.getFishLures(fish.id).any((fb) => fb.tackle == tackle.tackle);
+      }
+    }).toSet();
+  }
+
+  static double _calculateTotalEffectivenessWeight(Set<Fish> relevantFish, FishTackle tackle, TackleType tackleType) {
+    double totalEffectivenessWeight = 0;
+    double defaultEffectivenessWeight = 1 / (relevantFish.length.toDouble() + 1);
+
+    for (Fish fish in relevantFish) {
+      FishTackle? fishTackle;
+      switch (tackleType) {
+        case TackleType.bait:
+          fishTackle = HelperJSON.getFishBaits(fish.id).firstWhereOrNull((fb) => fb.tackle == tackle.tackle);
+          break;
+        case TackleType.lure:
+          fishTackle = HelperJSON.getFishLures(fish.id).firstWhereOrNull((fb) => fb.tackle == tackle.tackle);
+          break;
+      }
+
+      if (fishTackle == null) continue;
+
+      double weight = defaultEffectivenessWeight;
+      int strengthDifference = fishTackle.strength - tackle.strength;
+      double change = defaultEffectivenessWeight * -(strengthDifference / 2);
+      weight += change;
+      totalEffectivenessWeight += weight;
+    }
+
+    return totalEffectivenessWeight;
   }
 
   static Future<String> getData(String name) async {

@@ -1,9 +1,13 @@
+import 'package:cotwcastmate/interface/interface.dart';
 import 'package:cotwcastmate/interface/settings.dart';
+import 'package:cotwcastmate/interface/style.dart';
 import 'package:cotwcastmate/widgets/app/bar_app.dart';
+import 'package:cotwcastmate/widgets/app/padding.dart';
 import 'package:cotwcastmate/widgets/app/scaffold.dart';
 import 'package:cotwcastmate/widgets/dropdown/drop_down.dart';
 import 'package:cotwcastmate/widgets/dropdown/drop_down_item.dart';
 import 'package:cotwcastmate/widgets/section/section_tap_align.dart';
+import 'package:cotwcastmate/widgets/text/text.dart';
 import 'package:cotwcastmate/widgets/title/title.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +63,11 @@ class ActivitySettingsState extends State<ActivitySettings> {
       tr("UI:UNITS_METRIC"),
       indicatorRight: false,
       active: !(_settings.imperialUnits),
-      onTap: () => setState(() => _settings.changeUnits(false)),
+      onTap: () {
+        setState(() {
+          _settings.changeUnits(false);
+        });
+      },
     );
   }
 
@@ -67,7 +75,11 @@ class ActivitySettingsState extends State<ActivitySettings> {
     return WidgetSectionTapAlign(
       tr("UI:UNITS_IMPERIAL"),
       active: _settings.imperialUnits,
-      onTap: () => setState(() => _settings.changeUnits(true)),
+      onTap: () {
+        setState(() {
+          _settings.changeUnits(true);
+        });
+      },
     );
   }
 
@@ -86,6 +98,33 @@ class ActivitySettingsState extends State<ActivitySettings> {
     ];
   }
 
+  Widget _buildTackleEffectivenessDescription() {
+    return WidgetPadding.h30(
+      child: WidgetText(
+        tr("UI:TACKLE_EFFECTIVENESS_DESCRIPTION"),
+        color: Interface.disabled,
+        style: Style.normal.s12.w400,
+        autoSize: false,
+      ),
+    );
+  }
+
+  List<Widget> _listTackleEffectiveness() {
+    return [
+      WidgetSectionTapAlign(
+        tr("UI:TACKLE_EFFECTIVENESS"),
+        active: _settings.tackleEffectiveness,
+        indicatorRight: false,
+        onTap: () {
+          setState(() {
+            _settings.changeTackleEffectiveness();
+          });
+        },
+      ),
+      _buildTackleEffectivenessDescription(),
+    ];
+  }
+
   Widget _buildWidgets() {
     return WidgetScaffold(
       appBar: WidgetAppBar(
@@ -95,6 +134,8 @@ class ActivitySettingsState extends State<ActivitySettings> {
       children: [
         ..._listLanguage(),
         ..._listUnits(),
+        WidgetTitle(tr("UI:INTERFACE")),
+        ..._listTackleEffectiveness(),
       ],
     );
   }

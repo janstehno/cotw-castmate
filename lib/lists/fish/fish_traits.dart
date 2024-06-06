@@ -18,10 +18,22 @@ class ListFishTraits extends StatelessWidget {
   List<Trait> get _traits => _fish.traits.map((e) => HelperJSON.getTrait(e)).sorted(Trait.sortByName);
 
   Widget _buildTrait(Trait trait) {
-    return WidgetText(
-      trait.name,
-      color: Interface.primaryLight,
-      style: Style.normal.s16.w400,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        WidgetText(
+          trait.name,
+          color: Interface.primaryLight,
+          style: Style.normal.s16.w400,
+        ),
+        WidgetText(
+          trait.description,
+          color: Interface.disabled,
+          style: Style.normal.s10.w400,
+          autoSize: false,
+        ),
+        const SizedBox(height: 3),
+      ],
     );
   }
 

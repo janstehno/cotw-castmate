@@ -49,6 +49,11 @@ enum HookSize {
   h4_0,
 }
 
+enum TackleType {
+  bait,
+  lure,
+}
+
 enum BaitType {
   bottom,
   live,
