@@ -102,7 +102,7 @@ abstract class ListFishTackles<I extends FishTackle> extends StatelessWidget {
       List<I> tackles = getTackles;
       if (tackles.isEmpty) return const SizedBox.shrink();
 
-      Map<String, double> effectiveness = snapshot.data as Map<String, double>;
+      Map<String, double> effectiveness = Map<String, double>.from(snapshot.data!);;
       return buildTackles(tackles, effectiveness);
     }
   }
