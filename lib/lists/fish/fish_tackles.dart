@@ -1,29 +1,21 @@
-import 'package:cotwcastmate/helpers/json.dart';
 import 'package:cotwcastmate/interface/interface.dart';
 import 'package:cotwcastmate/interface/style.dart';
-import 'package:cotwcastmate/miscellaneous/enums.dart';
 import 'package:cotwcastmate/model/connect/fish_tackle.dart';
 import 'package:cotwcastmate/model/translatables/fish.dart';
-import 'package:cotwcastmate/model/translatables/reserve.dart';
-import 'package:cotwcastmate/widgets/app/error.dart';
-import 'package:cotwcastmate/widgets/indicator/loading_indicator.dart';
 import 'package:cotwcastmate/widgets/text/text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 abstract class ListFishTackles<I extends FishTackle> extends StatelessWidget {
   final Fish _fish;
-  final Reserve? _reserve;
-  final TackleType _tackleType;
+  final Map<String, double> _effectiveness;
 
-  const ListFishTackles(
+  ListFishTackles(
     Fish fish, {
     super.key,
-    Reserve? reserve,
-    required TackleType tackleType,
+    Map<String, double>? effectiveness,
   })  : _fish = fish,
-        _reserve = reserve,
-        _tackleType = tackleType;
+        _effectiveness = effectiveness ?? {};
 
   Fish get fish => _fish;
 
@@ -81,45 +73,11 @@ abstract class ListFishTackles<I extends FishTackle> extends StatelessWidget {
 
   Widget buildTackles(List<I> tackles, Map<String, double> effectiveness);
 
-  Future<Map<String, double>> _getTackleEffectiveness() async {
-    return HelperJSON.getTackleEffectiveness(_fish, _reserve!, _tackleType);
-  }
-
-  Widget _buildWidget(AsyncSnapshot<Map<dynamic, dynamic>> snapshot, BuildContext context) {
-    if (snapshot.hasError) {
-      return WidgetError(
-        code: "ExF001",
-        error: "${snapshot.error}",
-        stack: "${snapshot.stackTrace}",
-      );
-    } else if (!snapshot.hasData) {
-      return WidgetError(
-        code: "ExF002",
-        error: "${snapshot.error}",
-        stack: "${snapshot.stackTrace}",
-      );
-    } else {
-      List<I> tackles = getTackles;
-      if (tackles.isEmpty) return const SizedBox.shrink();
-
-      Map<String, double> effectiveness = Map<String, double>.from(snapshot.data!);;
-      return buildTackles(tackles, effectiveness);
-    }
-  }
-
   Widget _buildWidgets() {
-    return FutureBuilder(
-      future: _reserve == null ? Future.value({}) : _getTackleEffectiveness(),
-      builder: (context, AsyncSnapshot<Map<dynamic, dynamic>> snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const WidgetLoadingIndicator();
-        } else if (snapshot.connectionState != ConnectionState.done) {
-          return const SizedBox.shrink();
-        } else {
-          return _buildWidget(snapshot, context);
-        }
-      },
-    );
+    List<I> tackles = getTackles;
+    if (tackles.isEmpty) return const SizedBox.shrink();
+
+    return buildTackles(tackles, _effectiveness);
   }
 
   @override

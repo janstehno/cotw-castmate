@@ -32,12 +32,16 @@ import 'package:simple_shadow/simple_shadow.dart';
 
 class DetailFish extends StatelessWidget {
   final Fish _fish;
+  final Map<String, List<Map<String, double>>> _tackleEffectiveness;
+
   final PageController _pageController = PageController();
 
   DetailFish({
     super.key,
     required Fish fish,
-  }) : _fish = fish;
+    required Map<String, List<Map<String, double>>> tackleEffectiveness,
+  })  : _fish = fish,
+        _tackleEffectiveness = tackleEffectiveness;
 
   Widget _buildSpace() {
     return const SizedBox(height: 3);
@@ -200,11 +204,16 @@ class DetailFish extends StatelessWidget {
     );
   }
 
-  Widget _buildPage([Reserve? reserve, bool? enoughReserves]) {
+  Widget _buildPage([
+    Reserve? reserve,
+    Map<String, double>? fishBaitsEffectiveness,
+    Map<String, double>? fishLuresEffectiveness,
+    bool? enoughReserves,
+  ]) {
     return Column(
       children: [
-        ListFishBaits(_fish, reserve: reserve),
-        ListFishLures(_fish, reserve: reserve),
+        ListFishBaits(_fish, effectiveness: fishBaitsEffectiveness),
+        ListFishLures(_fish, effectiveness: fishLuresEffectiveness),
         if (reserve != null && enoughReserves!) ...[
           WidgetSubtitle(tr("UI:RESERVE")),
           _buildReserve(reserve.name),
@@ -213,7 +222,18 @@ class DetailFish extends StatelessWidget {
     );
   }
 
-  List<Widget> _listPages(BuildContext context) {
+  List<Widget> _listPages(bool enoughReserves) {
+    return _tackleEffectiveness.keys.map((e) {
+      return _buildPage(
+        HelperJSON.getReserve(e),
+        _tackleEffectiveness[e]!.first,
+        _tackleEffectiveness[e]!.last,
+        enoughReserves,
+      );
+    }).toList();
+  }
+
+  List<Widget> _listExpandablePageView(BuildContext context) {
     Settings settings = Provider.of<Settings>(context, listen: false);
     Set<FishReserve> fishReserves = HelperJSON.getFishReserves(_fish.id);
 
@@ -224,7 +244,7 @@ class DetailFish extends StatelessWidget {
           pageSnapping: true,
           controller: _pageController,
           scrollDirection: Axis.horizontal,
-          children: fishReserves.map((e) => _buildPage(HelperJSON.getReserve(e.reserve), enoughReserves)).toList(),
+          children: _listPages(enoughReserves),
         ),
         if (enoughReserves) _buildPageIndicator(fishReserves.length),
       ];
@@ -245,10 +265,14 @@ class DetailFish extends StatelessWidget {
         _buildReserves(),
         _buildWeight(),
         ..._listTraits(),
-        if (_fish.habitats.isNotEmpty) ..._listHabitats(),
-        if (_fish.weights.isNotEmpty) ..._listWeightDistribution(),
-        ..._listHookDistribution(),
-        ..._listPages(context),
+        Column(
+          children: [
+            if (_fish.habitats.isNotEmpty) ..._listHabitats(),
+            if (_fish.weights.isNotEmpty) ..._listWeightDistribution(),
+            ..._listHookDistribution(),
+            ..._listExpandablePageView(context),
+          ],
+        ),
       ],
     );
   }

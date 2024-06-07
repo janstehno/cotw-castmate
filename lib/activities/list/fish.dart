@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
-import 'package:cotwcastmate/activities/detail/fish.dart';
 import 'package:cotwcastmate/activities/list/items.dart';
+import 'package:cotwcastmate/builders/fish.dart';
 import 'package:cotwcastmate/helpers/filter.dart';
 import 'package:cotwcastmate/interface/interface.dart';
 import 'package:cotwcastmate/miscellaneous/utils.dart';
@@ -23,7 +23,7 @@ class ListAnimalsState extends ListItemsState<Fish> {
 
   @override
   void onTap(Fish item) {
-    Navigator.push(context, MaterialPageRoute(builder: (e) => DetailFish(fish: item)));
+    Navigator.push(context, MaterialPageRoute(builder: (e) => BuilderFish(fish: item)));
   }
 
   @override

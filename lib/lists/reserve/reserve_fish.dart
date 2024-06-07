@@ -1,5 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:cotwcastmate/activities/detail/fish.dart';
+import 'package:cotwcastmate/builders/fish.dart';
 import 'package:cotwcastmate/helpers/json.dart';
 import 'package:cotwcastmate/interface/interface.dart';
 import 'package:cotwcastmate/miscellaneous/utils.dart';
@@ -23,7 +23,7 @@ class ListReserveFish extends StatelessWidget {
       fish.name,
       background: fish.isLegendary ? Interface.legendary.withOpacity(0.1) : Utils.backgroundAt(_fish.indexOf(fish)),
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => DetailFish(fish: fish)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => BuilderFish(fish: fish)));
       },
     );
   }

@@ -158,26 +158,34 @@ class HelperJSON {
     }
   }
 
-  static Future<Map<String, double>> getTackleEffectiveness(Fish fish, Reserve reserve, TackleType tackleType) async {
-    Map<String, double> effectiveness = {};
+  static Future<Map<String, Map<String, double>>> getTackleEffectiveness(Fish fish, TackleType tackleType) async {
+    Map<String, Map<String, double>> tackleEffectiveness = {};
 
-    Set<Fish> reserveFish = _getFilteredReserveFish(fish, reserve);
-    Set<FishTackle> tackles = _getFishTackles(fish.id, tackleType);
+    Set<FishReserve> fishReserves = getFishReserves(fish.id);
+    for (FishReserve reserve in fishReserves) {
+      Map<String, double> effectiveness = {};
 
-    for (FishTackle tackle in tackles) {
-      Set<Fish> relevantFish = _getRelevantFishForTackle(reserveFish, tackle, tackleType);
-      double totalEffectivenessWeight = _calculateTotalEffectivenessWeight(relevantFish, tackle, tackleType);
-      effectiveness[tackle.tackle] = totalEffectivenessWeight;
+      Set<Fish> reserveFish = _getFilteredReserveFish(fish, reserve);
+      Set<FishTackle> tackles = _getFishTackles(fish.id, tackleType);
+
+      for (FishTackle tackle in tackles) {
+        Set<Fish> relevantFish = _getRelevantFishForTackle(reserveFish, tackle, tackleType);
+        double totalEffectivenessWeight = _calculateTotalEffectivenessWeight(relevantFish, tackle, tackleType);
+        effectiveness[tackle.tackle] = totalEffectivenessWeight;
+      }
+
+      double totalSum = effectiveness.values.reduce((a, b) => a + b);
+      effectiveness.updateAll((key, value) => (value / totalSum) * 100);
+
+      tackleEffectiveness[reserve.reserve] = effectiveness;
     }
 
-    double totalSum = effectiveness.values.reduce((a, b) => a + b);
-    effectiveness.updateAll((key, value) => (value / totalSum) * 100);
-    return effectiveness;
+    return tackleEffectiveness;
   }
 
-  static Set<Fish> _getFilteredReserveFish(Fish fish, Reserve reserve) {
+  static Set<Fish> _getFilteredReserveFish(Fish fish, FishReserve reserve) {
     Set<String> habitats = fish.habitats.map((e) => e.toString()).toSet();
-    Set<Fish> reserveFish = HelperJSON.getReserveFish(reserve.id);
+    Set<Fish> reserveFish = HelperJSON.getReserveFish(reserve.reserve);
     reserveFish.removeWhere((e) => e.id == fish.id);
     reserveFish.removeWhere((e) {
       return e.habitats.where((h) => habitats.contains(h)).length < min(habitats.length, Values.commonHabitatCount);

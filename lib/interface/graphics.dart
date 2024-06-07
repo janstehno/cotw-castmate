@@ -78,13 +78,13 @@ class Graphics {
   static String getTechniqueIcon(TechniqueType techniqueType) {
     switch (techniqueType) {
       case TechniqueType.constant:
-        return Assets.graphics.icons.techniqueConstant;
+        return Assets.graphics.images.techniqueConstant.path;
       case TechniqueType.twitching:
-        return Assets.graphics.icons.techniqueTwitching;
+        return Assets.graphics.images.techniqueTwitching.path;
       case TechniqueType.jigging:
-        return Assets.graphics.icons.techniqueJigging;
+        return Assets.graphics.images.techniqueJigging.path;
       case TechniqueType.stopAndGo:
-        return Assets.graphics.icons.techniqueStopandgo;
+        return Assets.graphics.images.techniqueStopandgo.path;
     }
   }
 

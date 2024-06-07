@@ -14,11 +14,11 @@ import 'package:flutter/material.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 
 class ListFishBaits extends ListFishTackles<FishBait> {
-  const ListFishBaits(
+  ListFishBaits(
     super.fish, {
     super.key,
-    super.reserve,
-  }) : super(tackleType: TackleType.bait);
+    super.effectiveness,
+  });
 
   @override
   List<FishBait> get getTackles => HelperJSON.getFishBaits(fish.id).sorted(FishBait.sortByStrength);
