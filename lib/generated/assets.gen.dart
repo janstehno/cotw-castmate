@@ -328,7 +328,16 @@ class $AssetsGraphicsImagesGen {
 
   AssetGenImage get cotw => const AssetGenImage('assets/graphics/images/cotw.png');
 
-  List<AssetGenImage> get values => [blue, cotw];
+  AssetGenImage get techniqueConstant => const AssetGenImage('assets/graphics/images/technique_constant.png');
+
+  AssetGenImage get techniqueJigging => const AssetGenImage('assets/graphics/images/technique_jigging.png');
+
+  AssetGenImage get techniqueStopandgo => const AssetGenImage('assets/graphics/images/technique_stopandgo.png');
+
+  AssetGenImage get techniqueTwitching => const AssetGenImage('assets/graphics/images/technique_twitching.png');
+
+  List<AssetGenImage> get values =>
+      [blue, cotw, techniqueConstant, techniqueJigging, techniqueStopandgo, techniqueTwitching];
 }
 
 class Assets {
