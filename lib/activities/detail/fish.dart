@@ -237,7 +237,7 @@ class DetailFish extends StatelessWidget {
     Settings settings = Provider.of<Settings>(context, listen: false);
     Set<FishReserve> fishReserves = HelperJSON.getFishReserves(_fish.id);
 
-    if (settings.tackleEffectiveness) {
+    if (settings.tackleEffectiveness && !_fish.isLegendary) {
       bool enoughReserves = fishReserves.length > 1;
       return [
         ExpandablePageView(
