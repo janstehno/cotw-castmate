@@ -45,8 +45,6 @@ class BuilderFishState extends BuilderBuilderState {
 
   @override
   void initializeData(AsyncSnapshot<Map<String, dynamic>> snapshot, BuildContext context) {
-    if (_tackleEffectivenessOff) return;
-
     Map<String, Map<String, double>> fishBaitsEffectiveness = snapshot.data!["fishBaitsEffectiveness"] ?? {};
     Map<String, Map<String, double>> fishLuresEffectiveness = snapshot.data!["fishLuresEffectiveness"] ?? {};
 
@@ -66,7 +64,7 @@ class BuilderFishState extends BuilderBuilderState {
 
   @override
   Future<Map<String, dynamic>> loadData() async {
-    if (_tackleEffectivenessOff) return {};
+    if (_tackleEffectivenessOff || (widget as BuilderFish).fish.isLegendary) return {};
 
     Map<String, Map<String, double>> fishBaitsEffectiveness =
         await HelperJSON.getTackleEffectiveness((widget as BuilderFish).fish, TackleType.bait);

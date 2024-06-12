@@ -1,7 +1,6 @@
 import 'package:cotwcastmate/helpers/json.dart';
 import 'package:cotwcastmate/interface/graphics.dart';
 import 'package:cotwcastmate/interface/interface.dart';
-import 'package:cotwcastmate/interface/settings.dart';
 import 'package:cotwcastmate/interface/style.dart';
 import 'package:cotwcastmate/interface/values.dart';
 import 'package:cotwcastmate/lists/fish/fish_baits.dart';
@@ -27,7 +26,6 @@ import 'package:cotwcastmate/widgets/title/title_sub.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 
 class DetailFish extends StatelessWidget {
@@ -234,11 +232,10 @@ class DetailFish extends StatelessWidget {
   }
 
   List<Widget> _listExpandablePageView(BuildContext context) {
-    Settings settings = Provider.of<Settings>(context, listen: false);
-    Set<FishReserve> fishReserves = HelperJSON.getFishReserves(_fish.id);
-
-    if (settings.tackleEffectiveness && !_fish.isLegendary) {
+    if (_tackleEffectiveness.isNotEmpty) {
+      Set<FishReserve> fishReserves = HelperJSON.getFishReserves(_fish.id);
       bool enoughReserves = fishReserves.length > 1;
+
       return [
         ExpandablePageView(
           pageSnapping: true,

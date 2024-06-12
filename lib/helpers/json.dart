@@ -160,6 +160,7 @@ class HelperJSON {
 
   static Future<Map<String, Map<String, double>>> getTackleEffectiveness(Fish fish, TackleType tackleType) async {
     Map<String, Map<String, double>> tackleEffectiveness = {};
+    if (fish.isLegendary) return tackleEffectiveness;
 
     Set<FishReserve> fishReserves = getFishReserves(fish.id);
     for (FishReserve reserve in fishReserves) {
@@ -174,8 +175,10 @@ class HelperJSON {
         effectiveness[tackle.tackle] = totalEffectivenessWeight;
       }
 
-      double totalSum = effectiveness.values.reduce((a, b) => a + b);
-      effectiveness.updateAll((key, value) => (value / totalSum) * 100);
+      if (effectiveness.values.length > 1) {
+        double totalSum = effectiveness.values.reduce((a, b) => a + b);
+        effectiveness.updateAll((key, value) => (value / totalSum) * 100);
+      }
 
       tackleEffectiveness[reserve.reserve] = effectiveness;
     }
