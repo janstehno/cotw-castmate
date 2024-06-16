@@ -290,6 +290,10 @@ class $AssetsGraphicsIconsGen {
 
   String get settings => 'assets/graphics/icons/settings.svg';
 
+  String get swipeRight => 'assets/graphics/icons/swipe_right.svg';
+
+  String get tap => 'assets/graphics/icons/tap.svg';
+
   String get techniqueConstant => 'assets/graphics/icons/technique_constant.svg';
 
   String get techniqueJigging => 'assets/graphics/icons/technique_jigging.svg';
@@ -314,6 +318,8 @@ class $AssetsGraphicsIconsGen {
         reserve,
         search,
         settings,
+        swipeRight,
+        tap,
         techniqueConstant,
         techniqueJigging,
         techniqueStopandgo,
@@ -348,7 +354,7 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName, {this.size});
+  const AssetGenImage(this._assetName, {this.size = null});
 
   final String _assetName;
 
