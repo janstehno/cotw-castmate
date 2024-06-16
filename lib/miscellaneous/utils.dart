@@ -1,40 +1,9 @@
 import 'package:cotwcastmate/interface/interface.dart';
-import 'package:cotwcastmate/miscellaneous/enums.dart';
-import 'package:cotwcastmate/widgets/app/bar_snack.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Utils {
   static Color backgroundAt(int i) => i % 2 == 0 ? Interface.odd : Interface.even;
-
-  static void _hideSnackBar(BuildContext context) => ScaffoldMessenger.of(context).hideCurrentSnackBar();
-
-  static void _buildSnackBar(WidgetSnackBar snackBar, BuildContext context) {
-    _hideSnackBar(context);
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(milliseconds: 1000),
-        padding: const EdgeInsets.all(0),
-        backgroundColor: Interface.primaryDark,
-        content: GestureDetector(
-          onTap: () {
-            _hideSnackBar(context);
-          },
-          child: snackBar,
-        ),
-      ),
-    );
-  }
-
-  static void buildSnackBarMessage(String message, ProcessType process, BuildContext context) {
-    _buildSnackBar(
-      WidgetSnackBar(
-        text: message,
-        process: process,
-      ),
-      context,
-    );
-  }
 
   static String removePointZero(double value) {
     String text = value.toString();
