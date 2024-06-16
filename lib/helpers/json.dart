@@ -3,8 +3,8 @@ import 'dart:math';
 
 import 'package:collection/collection.dart';
 import 'package:cotwcastmate/generated/assets.gen.dart';
-import 'package:cotwcastmate/interface/values.dart';
 import 'package:cotwcastmate/miscellaneous/enums.dart';
+import 'package:cotwcastmate/miscellaneous/values.dart';
 import 'package:cotwcastmate/model/connect/fish_bait.dart';
 import 'package:cotwcastmate/model/connect/fish_hook.dart';
 import 'package:cotwcastmate/model/connect/fish_lure.dart';

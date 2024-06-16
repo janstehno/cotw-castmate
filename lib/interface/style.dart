@@ -1,5 +1,5 @@
 import 'package:cotwcastmate/generated/fonts.gen.dart';
-import 'package:cotwcastmate/interface/values.dart';
+import 'package:cotwcastmate/miscellaneous/values.dart';
 import 'package:flutter/material.dart';
 
 class $StyleNormal {
@@ -55,6 +55,8 @@ class $StyleNormalSize12 {
       );
 
   TextStyle get w400i => w400.copyWith(fontStyle: FontStyle.italic);
+
+  TextStyle get w600 => w400.copyWith(fontWeight: FontWeight.w600);
 }
 
 class $StyleNormalSize16 {

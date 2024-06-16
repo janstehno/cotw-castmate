@@ -1,5 +1,6 @@
 import 'package:cotwcastmate/interface/interface.dart';
 import 'package:cotwcastmate/interface/style.dart';
+import 'package:cotwcastmate/miscellaneous/values.dart';
 import 'package:cotwcastmate/widgets/app/padding.dart';
 import 'package:cotwcastmate/widgets/text/text.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +19,12 @@ class WidgetSectionTap extends StatelessWidget {
         _background = background,
         _onTap = onTap;
 
+  double get height => Values.section;
+
   String get text => _text;
 
   Widget buildCenter() {
-    return WidgetPadding.h30v20(
+    return WidgetPadding.h30(
       background: _background,
       child: WidgetText(
         _text,
@@ -32,11 +35,14 @@ class WidgetSectionTap extends StatelessWidget {
   }
 
   Widget _buildWidgets() {
-    return GestureDetector(
-      onTap: () {
-        if (_onTap != null) _onTap!();
-      },
-      child: buildCenter(),
+    return SizedBox(
+      height: height,
+      child: GestureDetector(
+        onTap: () {
+          if (_onTap != null) _onTap!();
+        },
+        child: buildCenter(),
+      ),
     );
   }
 

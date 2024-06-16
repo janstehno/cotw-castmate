@@ -1,9 +1,9 @@
 import 'package:collection/collection.dart';
 import 'package:cotwcastmate/helpers/json.dart';
 import 'package:cotwcastmate/interface/interface.dart';
-import 'package:cotwcastmate/interface/values.dart';
 import 'package:cotwcastmate/lists/fish/fish_tackles.dart';
 import 'package:cotwcastmate/miscellaneous/enums.dart';
+import 'package:cotwcastmate/miscellaneous/values.dart';
 import 'package:cotwcastmate/model/connect/fish_bait.dart';
 import 'package:cotwcastmate/widgets/app/padding.dart';
 import 'package:cotwcastmate/widgets/title/title.dart';

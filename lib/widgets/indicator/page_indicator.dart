@@ -1,4 +1,4 @@
-import 'package:cotwcastmate/interface/values.dart';
+import 'package:cotwcastmate/miscellaneous/values.dart';
 import 'package:cotwcastmate/widgets/app/padding.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

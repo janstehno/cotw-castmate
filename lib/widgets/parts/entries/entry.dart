@@ -1,5 +1,5 @@
-import 'package:cotwcastmate/interface/values.dart';
 import 'package:cotwcastmate/miscellaneous/utils.dart';
+import 'package:cotwcastmate/miscellaneous/values.dart';
 import 'package:cotwcastmate/model/translatables/translatable.dart';
 import 'package:cotwcastmate/widgets/app/padding.dart';
 import 'package:flutter/material.dart';

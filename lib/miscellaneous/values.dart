@@ -10,7 +10,8 @@ class Values {
   static const double entry = 80;
   static const double title = 70;
   static const double subtitle = 65;
-  static const double menu = 35;
+  static const double section = 65;
+  static const double menu = 40;
 
   static const double dotSize = 7;
   static const double tapSize = 35;

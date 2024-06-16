@@ -1,6 +1,6 @@
+import 'package:cotwcastmate/miscellaneous/values.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:cotwcastmate/interface/values.dart';
 
 class WidgetIcon extends StatelessWidget {
   final String _icon;
