@@ -22,7 +22,7 @@ class WidgetSectionMenu extends WidgetSectionTap {
         super(background: Interface.transparent);
 
   @override
-  double get height => _icon == null ? Values.menu - 10 : Values.menu;
+  double get height => _icon == null ? Values.menu - 7 : Values.menu;
 
   Widget _buildIcon() {
     return WidgetIcon.withSize(
@@ -36,7 +36,7 @@ class WidgetSectionMenu extends WidgetSectionTap {
     return WidgetText(
       super.text,
       color: Interface.primaryLight.withOpacity(0.8),
-      style: Style.normal.s20.w400,
+      style: Style.normal.s18.w400,
     );
   }
 

@@ -8,8 +8,8 @@ import 'package:cotwcastmate/model/translatables/fish.dart';
 import 'package:cotwcastmate/widgets/parts/fish/fish.dart';
 import 'package:flutter/material.dart';
 
-class ListAnimals extends ListItems {
-  const ListAnimals({
+class ListFish extends ListItems {
+  const ListFish({
     super.key,
   }) : super("UI:FISH");
 
