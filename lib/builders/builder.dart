@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cotwcastmate/generated/assets.gen.dart';
 import 'package:cotwcastmate/interface/interface.dart';
 import 'package:cotwcastmate/widgets/app/error.dart';
@@ -42,8 +44,16 @@ abstract class BuilderBuilderState extends State<BuilderBuilder> {
 
   Widget _buildShadow() {
     return Container(
-      color: Interface.primaryDark.withOpacity(0.4),
-      alignment: Alignment.bottomRight,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          transform: const GradientRotation(pi / 2),
+          colors: [
+            Interface.dark0D.withOpacity(0.1),
+            Interface.dark0D.withOpacity(0.4),
+            Interface.dark0D.withOpacity(0.6),
+          ],
+        ),
+      ),
     );
   }
 
