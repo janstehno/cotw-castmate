@@ -1,4 +1,5 @@
 import 'package:cotwcastmate/interface/interface.dart';
+import 'package:cotwcastmate/miscellaneous/values.dart';
 import 'package:cotwcastmate/model/translatables/translatable.dart';
 import 'package:flutter/material.dart';
 
@@ -27,11 +28,17 @@ class Fish extends Translatable {
 
   String? get latin => _latin;
 
-  double? get minWeight => _minWeight;
+  double? minWeight(bool imperialUnits) {
+    return imperialUnits && _minWeight != null ? _minWeight! * Values.imperialPound : _minWeight;
+  }
 
-  double get maxWeight => _maxWeight;
+  double maxWeight(bool imperialUnits) {
+    return imperialUnits ? _maxWeight * Values.imperialPound : _maxWeight;
+  }
 
-  List<dynamic> get weights => _weights;
+  List<dynamic> weights(imperialUnits) {
+    return imperialUnits ? _weights.map((e) => e * Values.imperialPound).toList() : _weights;
+  }
 
   List<dynamic> get traits => _traits;
 

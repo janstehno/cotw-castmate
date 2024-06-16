@@ -24,4 +24,6 @@ class Values {
 
   static const int commonHabitatCount = 4;
   static const int commonHookCount = 4;
+
+  static const double imperialPound = 2.20462262;
 }

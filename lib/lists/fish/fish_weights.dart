@@ -1,10 +1,12 @@
 import 'package:cotwcastmate/interface/interface.dart';
+import 'package:cotwcastmate/interface/settings.dart';
 import 'package:cotwcastmate/interface/style.dart';
 import 'package:cotwcastmate/miscellaneous/utils.dart';
 import 'package:cotwcastmate/model/translatables/fish.dart';
 import 'package:cotwcastmate/widgets/text/text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ListFishWeights extends StatelessWidget {
   final Fish _fish;
@@ -55,13 +57,15 @@ class ListFishWeights extends StatelessWidget {
   }
 
   List<Widget> _listWeights(BuildContext context) {
+    bool imperialUnits = Provider.of<Settings>(context, listen: false).imperialUnits;
+
     List<Widget> widgets = [];
     List<dynamic> weights = [];
-    weights.add(_fish.minWeight!);
-    weights.addAll(_fish.weights);
-    weights.add(_fish.maxWeight);
+    weights.add(_fish.minWeight(imperialUnits)!);
+    weights.addAll(_fish.weights(imperialUnits));
+    weights.add(_fish.maxWeight(imperialUnits));
 
-    double rangeWidth = _fish.maxWeight - _fish.minWeight!;
+    double rangeWidth = _fish.maxWeight(imperialUnits) - _fish.minWeight(imperialUnits)!;
 
     for (int i = 1; i < weights.length; i++) {
       double previousWeight = weights[i - 1];

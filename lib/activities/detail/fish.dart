@@ -1,6 +1,7 @@
 import 'package:cotwcastmate/helpers/json.dart';
 import 'package:cotwcastmate/interface/graphics.dart';
 import 'package:cotwcastmate/interface/interface.dart';
+import 'package:cotwcastmate/interface/settings.dart';
 import 'package:cotwcastmate/interface/style.dart';
 import 'package:cotwcastmate/lists/fish/fish_baits.dart';
 import 'package:cotwcastmate/lists/fish/fish_habitats.dart';
@@ -26,6 +27,7 @@ import 'package:cotwcastmate/widgets/title/title_sub.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 
 class DetailFish extends StatelessWidget {
@@ -110,7 +112,13 @@ class DetailFish extends StatelessWidget {
     );
   }
 
-  Widget _buildWeight() {
+  Widget _buildWeight(bool imperialUnits) {
+    String minWeight =
+        _fish.minWeight(imperialUnits) == null ? "" : Utils.removePointZero(_fish.minWeight(imperialUnits)!);
+    String weightDash = _fish.minWeight(imperialUnits) == null ? "" : " -";
+    String maxWeight = Utils.removePointZero(_fish.maxWeight(imperialUnits));
+    String weightUnits = imperialUnits ? tr("UI:LB") : tr("UI:KG");
+
     return WidgetPadding.fromLTRB(
       30,
       15,
@@ -127,7 +135,7 @@ class DetailFish extends StatelessWidget {
           ),
           _buildSpace(),
           WidgetText(
-            "${_fish.minWeight == null ? "" : Utils.removePointZero(_fish.minWeight!)}${_fish.minWeight == null ? "" : " -"} ${Utils.removePointZero(_fish.maxWeight)} ${tr("UI:KG")}",
+            "$minWeight$weightDash $maxWeight$weightUnits",
             color: Interface.primaryLight,
             style: Style.normal.s16.w400,
           ),
@@ -250,6 +258,8 @@ class DetailFish extends StatelessWidget {
   }
 
   Widget _buildWidgets(BuildContext context) {
+    bool imperialUnits = Provider.of<Settings>(context, listen: false).imperialUnits;
+
     return WidgetScaffold(
       appBar: WidgetAppBar(
         tr("UI:FISH"),
@@ -260,12 +270,12 @@ class DetailFish extends StatelessWidget {
         _buildName(),
         const WidgetDivider(),
         _buildReserves(),
-        _buildWeight(),
+        _buildWeight(imperialUnits),
         ..._listTraits(),
         Column(
           children: [
             if (_fish.habitats.isNotEmpty) ..._listHabitats(),
-            if (_fish.weights.isNotEmpty) ..._listWeightDistribution(),
+            if (_fish.weights(imperialUnits).isNotEmpty) ..._listWeightDistribution(),
             ..._listHookDistribution(),
             ..._listExpandablePageView(context),
           ],
