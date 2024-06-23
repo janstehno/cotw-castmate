@@ -103,6 +103,8 @@ class $AssetsGraphicsFishGen {
 
   AssetGenImage get europeanPerch => const AssetGenImage('assets/graphics/fish/european_perch.png');
 
+  AssetGenImage get freshwaterDrum => const AssetGenImage('assets/graphics/fish/freshwater_drum.png');
+
   AssetGenImage get goldenTrout => const AssetGenImage('assets/graphics/fish/golden_trout.png');
 
   AssetGenImage get goldstein => const AssetGenImage('assets/graphics/fish/goldstein.png');
@@ -149,6 +151,8 @@ class $AssetsGraphicsFishGen {
 
   AssetGenImage get roach => const AssetGenImage('assets/graphics/fish/roach.png');
 
+  AssetGenImage get rockBass => const AssetGenImage('assets/graphics/fish/rock_bass.png');
+
   AssetGenImage get rudd => const AssetGenImage('assets/graphics/fish/rudd.png');
 
   AssetGenImage get ruffe => const AssetGenImage('assets/graphics/fish/ruffe.png');
@@ -178,6 +182,10 @@ class $AssetsGraphicsFishGen {
   AssetGenImage get tigerMuskie => const AssetGenImage('assets/graphics/fish/tiger_muskie.png');
 
   AssetGenImage get walleye => const AssetGenImage('assets/graphics/fish/walleye.png');
+
+  AssetGenImage get welsCatfish => const AssetGenImage('assets/graphics/fish/wels_catfish.png');
+
+  AssetGenImage get whiteCrappie => const AssetGenImage('assets/graphics/fish/white_crappie.png');
 
   AssetGenImage get yellowPerch => const AssetGenImage('assets/graphics/fish/yellow_perch.png');
 
@@ -214,6 +222,7 @@ class $AssetsGraphicsFishGen {
         europeanBullhead,
         europeanEel,
         europeanPerch,
+        freshwaterDrum,
         goldenTrout,
         goldstein,
         grassCarp,
@@ -237,6 +246,7 @@ class $AssetsGraphicsFishGen {
         redbreastKurper,
         rednoseLabeo,
         roach,
+        rockBass,
         rudd,
         ruffe,
         sauger,
@@ -252,6 +262,8 @@ class $AssetsGraphicsFishGen {
         thinlipMullet,
         tigerMuskie,
         walleye,
+        welsCatfish,
+        whiteCrappie,
         yellowPerch,
         zander
       ];

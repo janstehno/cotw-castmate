@@ -72,7 +72,11 @@ class Graphics {
     "FISH:COTTUS_POECILOPUS": Assets.graphics.fish.alpineBullhead.path,
     "FISH:LABEOBARBUS_KIMBERLEYENSIS": Assets.graphics.fish.largemouthYellowfish.path,
     "FISH:GYMNOCEPHALUS_CERNUA": Assets.graphics.fish.ruffe.path,
-    "FISH:LABEO_CONGORO": Assets.graphics.fish.purpleLabeo.path
+    "FISH:LABEO_CONGORO": Assets.graphics.fish.purpleLabeo.path,
+    "FISH:POMOXIS_ANNULARIS": Assets.graphics.fish.whiteCrappie.path,
+    "FISH:AMBLOPLITES_RUPESTRIS": Assets.graphics.fish.rockBass.path,
+    "FISH:APLODINOTUS_GRUNNIENS": Assets.graphics.fish.freshwaterDrum.path,
+    "FISH:SILURUS_GLANIS": Assets.graphics.fish.welsCatfish.path
   };
 
   static String getTechniqueIcon(TechniqueType techniqueType) {
