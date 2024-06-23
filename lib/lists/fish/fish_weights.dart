@@ -18,12 +18,12 @@ class ListFishWeights extends StatelessWidget {
 
   Widget _buildBar(Color color, double flex, BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double maxWidth = screenWidth;
-    double width = maxWidth * flex;
+    double availableWidth = screenWidth - 140;
+    double barWidth = availableWidth * flex;
 
     return Container(
       height: 15,
-      width: width < 5 ? 5 : width,
+      width: barWidth < 5 ? 5 : barWidth,
       margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
@@ -49,9 +49,9 @@ class ListFishWeights extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        _buildText(Utils.removePointZero(previousWeight), Alignment.center),
+        _buildText(Utils.formatDouble(previousWeight), Alignment.center),
         _buildBar(color, flex, context),
-        _buildText(Utils.removePointZero(actualWeight), Alignment.centerLeft),
+        _buildText(Utils.formatDouble(actualWeight), Alignment.centerLeft),
       ],
     );
   }
