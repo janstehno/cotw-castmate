@@ -50,6 +50,7 @@ class Interface {
   static Color title = primaryDark.withOpacity(0.4);
   static Color subtitle = title.withOpacity(0.2);
 
+  static Color additional = primaryLight.withOpacity(0.6);
   static Color disabled = primaryLight.withOpacity(0.4);
   static Color dropDown = primaryDark.withOpacity(0.8);
 
