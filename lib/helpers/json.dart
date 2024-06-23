@@ -175,11 +175,7 @@ class HelperJSON {
         effectiveness[tackle.tackle] = totalEffectivenessWeight;
       }
 
-      if (effectiveness.values.length > 1) {
-        double totalSum = effectiveness.values.reduce((a, b) => a + b);
-        effectiveness.updateAll((key, value) => (value / totalSum) * 100);
-      }
-
+      effectiveness.updateAll((key, value) => value * 10);
       tackleEffectiveness[reserve.reserve] = effectiveness;
     }
 
@@ -216,7 +212,7 @@ class HelperJSON {
   }
 
   static double _calculateTotalEffectivenessWeight(Set<Fish> relevantFish, FishTackle tackle, TackleType tackleType) {
-    double totalEffectivenessWeight = 0;
+    double totalEffectivenessWeight = 1 / (relevantFish.length.toDouble() + 1);
     double defaultEffectivenessWeight = 1 / (relevantFish.length.toDouble() + 1);
 
     for (Fish fish in relevantFish) {
@@ -232,14 +228,12 @@ class HelperJSON {
 
       if (fishTackle == null) continue;
 
-      double weight = defaultEffectivenessWeight;
       int strengthDifference = fishTackle.strength - tackle.strength;
       double change = defaultEffectivenessWeight * -(strengthDifference / 2);
-      weight += change;
-      totalEffectivenessWeight += weight;
+      totalEffectivenessWeight += change;
     }
 
-    return totalEffectivenessWeight;
+    return max(0, totalEffectivenessWeight);
   }
 
   static Future<String> getData(String name) async {
