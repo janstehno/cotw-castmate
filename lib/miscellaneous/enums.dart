@@ -58,6 +58,7 @@ enum BaitType {
   bottom,
   live,
   natural,
+  ground,
 }
 
 enum TechniqueType {

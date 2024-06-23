@@ -3,13 +3,18 @@ import 'package:cotwcastmate/model/translatables/translatable.dart';
 
 class Bait extends Translatable {
   final BaitType _type;
+  final bool _ground;
 
   Bait({
     required super.id,
     required BaitType type,
-  }) : _type = type;
+    required bool? ground,
+  })  : _type = type,
+        _ground = ground ?? false;
 
   BaitType get type => _type;
+
+  bool get isGround => _ground || _type == BaitType.ground;
 
   factory Bait.fromJson(Map<String, dynamic> json) {
     return Bait(
@@ -17,6 +22,7 @@ class Bait extends Translatable {
       type: BaitType.values.firstWhere((e) {
         return e.name.toLowerCase() == json["TYPE"].split(":").elementAt(1).toLowerCase();
       }),
+      ground: json["GROUND"],
     );
   }
 
