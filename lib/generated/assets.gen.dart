@@ -276,6 +276,8 @@ class $AssetsGraphicsIconsGen {
 
   String get back => 'assets/graphics/icons/back.svg';
 
+  String get baitGround => 'assets/graphics/icons/bait_ground.svg';
+
   String get cancel => 'assets/graphics/icons/cancel.svg';
 
   String get check => 'assets/graphics/icons/check.svg';
@@ -317,6 +319,7 @@ class $AssetsGraphicsIconsGen {
   List<String> get values => [
         about,
         back,
+        baitGround,
         cancel,
         check,
         coffee,
