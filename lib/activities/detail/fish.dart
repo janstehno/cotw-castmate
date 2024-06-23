@@ -50,7 +50,7 @@ class DetailFish extends StatelessWidget {
   Widget _buildImage() {
     return Container(
       height: 200,
-      padding: const EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
       alignment: Alignment.center,
       child: SimpleShadow(
         sigma: 4,
