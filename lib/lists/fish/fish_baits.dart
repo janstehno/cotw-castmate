@@ -24,6 +24,9 @@ class ListFishBaits extends ListFishTackles<FishBait> {
   List<FishBait> get getTackles => HelperJSON.getFishBaits(fish.id).sorted(FishBait.sortByStrength);
 
   @override
+  bool isTackleGround(FishBait tackle) => HelperJSON.getBait(tackle.tackle).isGround;
+
+  @override
   String getTackleName(FishBait tackle) => HelperJSON.getBait(tackle.tackle).name;
 
   @override
@@ -68,6 +71,7 @@ class ListFishBaits extends ListFishTackles<FishBait> {
     List<FishBait> natural = tackles.where((e) => e.type == BaitType.natural).toList();
     List<FishBait> bottom = tackles.where((e) => e.type == BaitType.bottom).toList();
     List<FishBait> live = tackles.where((e) => e.type == BaitType.live).toList();
+    List<FishBait> ground = tackles.where((e) => e.type == BaitType.ground).toList();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,6 +80,7 @@ class ListFishBaits extends ListFishTackles<FishBait> {
         if (natural.isNotEmpty) ..._listSubTackles(tr("TYPE:NATURAL"), natural, effectiveness),
         if (bottom.isNotEmpty) ..._listSubTackles(tr("TYPE:BOTTOM"), bottom, effectiveness),
         if (live.isNotEmpty) ..._listSubTackles(tr("TYPE:LIVE"), live, effectiveness),
+        if (ground.isNotEmpty) ..._listSubTackles(tr("TYPE:GROUND"), ground, effectiveness),
       ],
     );
   }

@@ -1,9 +1,10 @@
+import 'package:cotwcastmate/generated/assets.gen.dart';
 import 'package:cotwcastmate/interface/interface.dart';
 import 'package:cotwcastmate/interface/style.dart';
 import 'package:cotwcastmate/model/connect/fish_tackle.dart';
 import 'package:cotwcastmate/model/translatables/fish.dart';
+import 'package:cotwcastmate/widgets/icon/icon.dart';
 import 'package:cotwcastmate/widgets/text/text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 abstract class ListFishTackles<I extends FishTackle> extends StatelessWidget {
@@ -21,17 +22,31 @@ abstract class ListFishTackles<I extends FishTackle> extends StatelessWidget {
 
   List<I> get getTackles;
 
+  bool isTackleGround(I tackle) => false;
+
   String getTackleName(I tackle);
 
   Widget buildIcon(I tackle, [int? i]);
 
   Widget buildStrength(I tackle);
 
+  Widget _buildGround() {
+    return WidgetIcon.withSize(
+      Assets.graphics.icons.baitGround,
+      color: Interface.disabled,
+      size: 12,
+    );
+  }
+
   Widget _buildEffectiveness(double effectiveness) {
-    return WidgetText(
-      "${effectiveness.round()}",
-      color: effectiveness == 0 ? Interface.disabled.withOpacity(0.2) : Interface.disabled,
-      style: Style.normal.s16.w400i,
+    return Container(
+      width: 25,
+      alignment: Alignment.center,
+      child: WidgetText(
+        effectiveness.round() == 0 ? "-" : "${effectiveness.round()}",
+        color: effectiveness == 0 ? Interface.disabled.withOpacity(0.2) : Interface.disabled,
+        style: Style.normal.s16.w400i,
+      ),
     );
   }
 
@@ -48,10 +63,27 @@ abstract class ListFishTackles<I extends FishTackle> extends StatelessWidget {
       height: 25,
       child: Row(
         children: [
-          Expanded(child: _buildTackleName(tackle)),
-          const SizedBox(width: 10),
-          if (effectiveness != null) _buildEffectiveness(effectiveness),
-          const SizedBox(width: 10),
+          Expanded(
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: _buildTackleName(tackle),
+                ),
+                if (isTackleGround(tackle)) ...[
+                  const SizedBox(width: 10),
+                  _buildGround(),
+                ],
+              ],
+            ),
+          ),
+          const SizedBox(width: 15),
+          if (effectiveness != null) ...[
+            _buildEffectiveness(effectiveness),
+            const SizedBox(width: 15),
+          ],
           buildStrength(tackle),
         ],
       ),
