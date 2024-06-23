@@ -114,9 +114,9 @@ class DetailFish extends StatelessWidget {
 
   Widget _buildWeight(bool imperialUnits) {
     String minWeight =
-        _fish.minWeight(imperialUnits) == null ? "" : Utils.removePointZero(_fish.minWeight(imperialUnits)!);
+        _fish.minWeight(imperialUnits) == null ? "" : Utils.formatDouble(_fish.minWeight(imperialUnits)!);
     String weightDash = _fish.minWeight(imperialUnits) == null ? "" : " -";
-    String maxWeight = Utils.removePointZero(_fish.maxWeight(imperialUnits));
+    String maxWeight = Utils.formatDouble(_fish.maxWeight(imperialUnits));
     String weightUnits = imperialUnits ? tr("UI:LB") : tr("UI:KG");
 
     return WidgetPadding.fromLTRB(
