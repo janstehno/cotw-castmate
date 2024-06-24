@@ -87,8 +87,8 @@ class ListFishHooks extends StatelessWidget {
         ? (screenWidth - 60 - ((_hookSizes.length - 1) * 10)) / _hookSizes.length
         : (screenWidth - 60 - (6 * 10)) / 7;
 
-    if (orientation == Orientation.portrait) return _buildPortrait(width, context);
-    return _buildLandscape(width, context);
+    if (orientation == Orientation.portrait) return _buildPortrait(width.floorToDouble(), context);
+    return _buildLandscape(width.floorToDouble(), context);
   }
 
   @override
