@@ -22,7 +22,7 @@ class Values {
   static const double normalLineHeight = 1.5;
   static const double bigLineHeight = 1;
 
-  static const int commonHabitatCount = 4;
+  static const int commonHabitatCount = 2;
   static const int commonHookCount = 4;
 
   static const double imperialPound = 2.20462262;
