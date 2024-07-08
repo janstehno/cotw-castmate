@@ -35,12 +35,13 @@ class WidgetSectionTap extends StatelessWidget {
   }
 
   Widget _buildWidgets() {
-    return SizedBox(
-      height: height,
-      child: GestureDetector(
-        onTap: () {
-          if (_onTap != null) _onTap!();
-        },
+    return GestureDetector(
+      onTap: () {
+        if (_onTap != null) _onTap!();
+      },
+      child: Container(
+        height: height,
+        color: Interface.transparent,
         child: buildCenter(),
       ),
     );
