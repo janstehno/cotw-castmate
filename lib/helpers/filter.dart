@@ -12,7 +12,11 @@ class HelperFilter {
 
   static Set<Fish> filterFish(String text) {
     if (text.isNotEmpty) {
-      return HelperJSON.fish.where((e) => e.name.toLowerCase().contains(text.toLowerCase())).toSet();
+      return HelperJSON.fish
+          .where((e) =>
+              e.name.toLowerCase().contains(text.toLowerCase()) ||
+              (e.isLegendary && e.alternative.toLowerCase().contains(text.toLowerCase())))
+          .toSet();
     }
     return HelperJSON.fish;
   }
