@@ -5,7 +5,7 @@ import 'package:cotwcastmate/interface/interface.dart';
 import 'package:cotwcastmate/miscellaneous/utils.dart';
 import 'package:cotwcastmate/model/translatables/fish.dart';
 import 'package:cotwcastmate/model/translatables/reserve.dart';
-import 'package:cotwcastmate/widgets/section/section_tap.dart';
+import 'package:cotwcastmate/widgets/parts/fish/fish.dart';
 import 'package:flutter/material.dart';
 
 class ListReserveFish extends StatelessWidget {
@@ -18,9 +18,10 @@ class ListReserveFish extends StatelessWidget {
 
   List<Fish> get _fish => HelperJSON.getReserveFish(_reserve.id).sorted(Fish.sortByName);
 
-  Widget _buildFish(BuildContext context, Fish fish) {
-    return WidgetSectionTap(
-      fish.name,
+  Widget _buildFish(BuildContext context, int index, Fish fish) {
+    return WidgetFish(
+      index: index,
+      entry: fish,
       background: fish.isLegendary ? Interface.legendary.withOpacity(0.1) : Utils.backgroundAt(_fish.indexOf(fish)),
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => BuilderFish(fish: fish)));
@@ -29,7 +30,7 @@ class ListReserveFish extends StatelessWidget {
   }
 
   List<Widget> _listFish(BuildContext context) {
-    return _fish.map((e) => _buildFish(context, e)).toList();
+    return _fish.mapIndexed((i, e) => _buildFish(context, i, e)).toList();
   }
 
   Widget _buildWidgets(BuildContext context) {
