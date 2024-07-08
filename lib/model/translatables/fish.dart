@@ -49,7 +49,7 @@ class Fish extends Translatable {
   Color weightColor(int i) {
     switch (i) {
       case 0:
-        return Interface.disabled.withOpacity(0.1);
+        return Interface.juvenile;
       case 1:
         return Interface.bronze;
       case 2:

@@ -38,6 +38,8 @@ class Interface {
   static const Color markerVista = Color(0xFF3483C0);
   static const Color markerChallengeBoard = Color(0xFF4AC8C9);
 
+  static Color none = disabled.withOpacity(0.1);
+  static const Color juvenile = dark1A;
   static const Color bronze = Color(0xFF6D4C41);
   static const Color silver = Color(0xFF546E7A);
   static const Color gold = Color(0xFFCCA000);

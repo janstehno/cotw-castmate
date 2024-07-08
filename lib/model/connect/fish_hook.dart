@@ -20,21 +20,16 @@ class FishHook {
 
   int get trophy => _trophy;
 
+  bool get isGold => _trophy == 3;
+
   Color hookColor() {
-    switch (_trophy) {
-      case 5:
-        return Interface.legendary;
-      case 4:
-        return Interface.diamond;
-      case 3:
-        return Interface.gold;
-      case 2:
-        return Interface.silver;
-      case 1:
-        return Interface.bronze;
-      default:
-        throw UnimplementedError();
-    }
+    if (trophy == 0) return Interface.juvenile;
+    if (trophy == 1) return Interface.bronze;
+    if (trophy == 2) return Interface.silver;
+    if (trophy == 3) return Interface.gold;
+    if (trophy == 4) return Interface.diamond;
+    if (trophy == 5) return Interface.legendary;
+    throw UnimplementedError();
   }
 
   factory FishHook.fromJson(Map<String, dynamic> json) {
