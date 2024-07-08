@@ -42,7 +42,7 @@ class ListFishBaits extends ListFishTackles<FishBait> {
         margin: const EdgeInsets.symmetric(horizontal: 3),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(3),
-          color: tackle.strengthColor(),
+          color: tackle.strengthColor,
         ),
       ),
     );

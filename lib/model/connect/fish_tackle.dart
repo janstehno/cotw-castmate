@@ -21,17 +21,11 @@ abstract class FishTackle {
 
   int get strength => _strength;
 
-  Color strengthColor() {
-    switch (_strength) {
-      case 1:
-        return Interface.bronze;
-      case 2:
-        return Interface.silver;
-      case 3:
-        return Interface.gold;
-      default:
-        throw UnimplementedError();
-    }
+  Color get strengthColor {
+    if (_strength == 3) return Interface.gold;
+    if (_strength == 2) return Interface.silver;
+    if (_strength == 1) return Interface.bronze;
+    throw UnimplementedError();
   }
 
   static Comparator<FishTackle> sortByStrength = (a, b) => 0;

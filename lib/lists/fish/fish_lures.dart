@@ -37,7 +37,7 @@ class ListFishLures extends ListFishTackles<FishLure> {
         child: Image.asset(
           Graphics.getTechniqueIcon(TechniqueType.values.elementAt(i!)),
           color: HelperJSON.getLure(tackle.tackle).technique(i)
-              ? tackle.strengthColor()
+              ? tackle.strengthColor
               : Interface.disabled.withOpacity(0.1),
           fit: BoxFit.fitWidth,
         ),
