@@ -81,7 +81,7 @@ class DetailFish extends StatelessWidget {
           ),
           _buildSpace(),
           WidgetText(
-            _fish.latin ?? tr("UI:LEGENDARY"),
+            _fish.isLegendary ? _fish.alternative : _fish.latin!,
             color: Interface.disabled,
             style: Style.normal.s12.w400i,
           ),

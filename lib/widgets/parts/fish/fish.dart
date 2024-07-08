@@ -3,7 +3,6 @@ import 'package:cotwcastmate/interface/style.dart';
 import 'package:cotwcastmate/model/translatables/fish.dart';
 import 'package:cotwcastmate/widgets/parts/entries/entry.dart';
 import 'package:cotwcastmate/widgets/text/text.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class WidgetFish extends WidgetEntry<Fish> {
@@ -27,7 +26,7 @@ class WidgetFish extends WidgetEntry<Fish> {
   @override
   Widget? buildSubText() {
     return WidgetText(
-      entry.latin ?? tr("UI:LEGENDARY"),
+      entry.isLegendary ? entry.alternative : entry.latin!,
       color: Interface.primaryLight.withOpacity(0.6),
       style: Style.normal.s12.w400i,
     );

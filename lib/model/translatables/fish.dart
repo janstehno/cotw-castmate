@@ -1,9 +1,11 @@
 import 'package:cotwcastmate/interface/interface.dart';
 import 'package:cotwcastmate/miscellaneous/values.dart';
 import 'package:cotwcastmate/model/translatables/translatable.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class Fish extends Translatable {
+  final String? _alternative;
   final String? _latin;
   final double? _minWeight;
   final double _maxWeight;
@@ -13,18 +15,22 @@ class Fish extends Translatable {
 
   Fish({
     required super.id,
+    required String? alternative,
     required String? latin,
     required double? minWeight,
     required double maxWeight,
     required List<dynamic>? weights,
     required List<dynamic> traits,
     required List<dynamic>? habitats,
-  })  : _latin = latin,
+  })  : _alternative = alternative,
+        _latin = latin,
         _minWeight = minWeight,
         _maxWeight = maxWeight,
         _weights = weights ?? [],
         _traits = traits,
         _habitats = habitats ?? [];
+
+  String get alternative => tr(_alternative!);
 
   String? get latin => _latin;
 
@@ -44,7 +50,7 @@ class Fish extends Translatable {
 
   List<dynamic> get habitats => _habitats;
 
-  bool get isLegendary => _latin == null && _weights.isEmpty && _habitats.isEmpty;
+  bool get isLegendary => _alternative != null && _latin == null && _weights.isEmpty && _habitats.isEmpty;
 
   Color weightColor(int i) {
     switch (i) {
@@ -66,6 +72,7 @@ class Fish extends Translatable {
   factory Fish.fromJson(Map<String, dynamic> json) {
     return Fish(
       id: json["ID"],
+      alternative: json["ALTERNATIVE"],
       latin: json["LATIN"],
       minWeight: json["MIN_WEIGHT"],
       maxWeight: json["MAX_WEIGHT"],
