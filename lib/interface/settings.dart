@@ -4,10 +4,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Settings extends ChangeNotifier {
   static const List<Locale> languageCodes = [
     Locale("en"),
+    Locale("es"),
   ];
 
   final List<String> _languages = [
     "English",
+    "Español",
   ];
 
   late int _language;
