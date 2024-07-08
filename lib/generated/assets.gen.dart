@@ -8,6 +8,8 @@ class $AssetsGraphicsGen {
   $AssetsGraphicsIconsGen get icons => const $AssetsGraphicsIconsGen();
 
   $AssetsGraphicsImagesGen get images => const $AssetsGraphicsImagesGen();
+
+  $AssetsGraphicsReservesGen get reserves => const $AssetsGraphicsReservesGen();
 }
 
 class $AssetsRawGen {
@@ -359,6 +361,22 @@ class $AssetsGraphicsImagesGen {
 
   List<AssetGenImage> get values =>
       [blue, cotw, techniqueConstant, techniqueJigging, techniqueStopandgo, techniqueTwitching];
+}
+
+class $AssetsGraphicsReservesGen {
+  const $AssetsGraphicsReservesGen();
+
+  AssetGenImage get aguasClarasMunicipio => const AssetGenImage('assets/graphics/reserves/aguas_claras_municipio.png');
+
+  AssetGenImage get goldenRidgeReserve => const AssetGenImage('assets/graphics/reserves/golden_ridge_reserve.png');
+
+  AssetGenImage get iziloZasendulo => const AssetGenImage('assets/graphics/reserves/izilo_zasendulo.png');
+
+  AssetGenImage get trollsporetNatureReserve =>
+      const AssetGenImage('assets/graphics/reserves/trollsporet_nature_reserve.png');
+
+  List<AssetGenImage> get values =>
+      [aguasClarasMunicipio, goldenRidgeReserve, iziloZasendulo, trollsporetNatureReserve];
 }
 
 class Assets {
