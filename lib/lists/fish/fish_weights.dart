@@ -32,10 +32,10 @@ class ListFishWeights extends StatelessWidget {
     );
   }
 
-  Widget _buildText(String weight, Alignment alignment) {
+  Widget _buildText(String weight) {
     return Container(
-      width: 30,
-      alignment: alignment,
+      width: 35,
+      alignment: Alignment.center,
       child: WidgetText(
         weight,
         color: Interface.primaryLight,
@@ -49,9 +49,9 @@ class ListFishWeights extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        _buildText(Utils.formatDouble(previousWeight), Alignment.center),
+        _buildText(Utils.formatDouble(previousWeight)),
         _buildBar(color, flex, context),
-        _buildText(Utils.formatDouble(actualWeight), Alignment.centerLeft),
+        _buildText(Utils.formatDouble(actualWeight)),
       ],
     );
   }
