@@ -1,3 +1,4 @@
+import 'package:cotwcastmate/interface/graphics.dart';
 import 'package:cotwcastmate/interface/interface.dart';
 import 'package:cotwcastmate/interface/style.dart';
 import 'package:cotwcastmate/lists/reserve/reserve_fish.dart';
@@ -9,6 +10,7 @@ import 'package:cotwcastmate/widgets/text/text.dart';
 import 'package:cotwcastmate/widgets/title/title.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:simple_shadow/simple_shadow.dart';
 
 class DetailReserve extends StatelessWidget {
   final Reserve _reserve;
@@ -22,49 +24,45 @@ class DetailReserve extends StatelessWidget {
     return const SizedBox(height: 3);
   }
 
-  /*Widget _buildImage() {
-    return SizedBox(
-      height: 110,
-      child: WidgetMargin.right(
-        30,
-        child: SimpleShadow(
-          sigma: 0,
-          child: Stack(
-            children: [
-              Image.asset(
-                Graphics.getFish(_reserve.id),
-                fit: BoxFit.fitWidth,
-              ),
-            ],
-          ),
+  Widget _buildImage() {
+    return Container(
+      height: 170,
+      padding: const EdgeInsets.fromLTRB(30, 30, 30, 20),
+      alignment: Alignment.center,
+      child: SimpleShadow(
+        sigma: 4,
+        child: Image.asset(
+          Graphics.getReserve(_reserve.id),
+          fit: BoxFit.fitHeight,
         ),
       ),
     );
-  }*/
+  }
 
   Widget _buildName() {
-    return Container(
-      height: 110,
-      alignment: Alignment.centerLeft,
-      child: WidgetPadding.a30(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            WidgetText(
-              _reserve.name.toUpperCase(),
-              color: Interface.primary,
-              style: Style.normal.s20.w600,
-            ),
-            _buildSpace(),
-            WidgetText(
-              _reserve.location,
-              color: Interface.disabled,
-              style: Style.normal.s12.w400i,
-            ),
-          ],
-        ),
+    return WidgetPadding.fromLTRB(
+      30,
+      10,
+      30,
+      30,
+      alignment: Alignment.center,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          WidgetText(
+            _reserve.name.toUpperCase(),
+            color: Interface.primary,
+            style: Style.normal.s20.w600,
+          ),
+          _buildSpace(),
+          WidgetText(
+            _reserve.location,
+            color: Interface.disabled,
+            style: Style.normal.s12.w400i,
+          ),
+        ],
       ),
     );
   }
@@ -83,13 +81,8 @@ class DetailReserve extends StatelessWidget {
         context: context,
       ),
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(child: _buildName()),
-            //TODO _buildImage(),
-          ],
-        ),
+        _buildImage(),
+        _buildName(),
         ..._listFish(),
       ],
     );

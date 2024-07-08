@@ -2,6 +2,13 @@ import 'package:cotwcastmate/generated/assets.gen.dart';
 import 'package:cotwcastmate/miscellaneous/enums.dart';
 
 class Graphics {
+  static final Map<String, String> _reserve = {
+    "RESERVE:GOLDEN_RIDGE_RESERVE": Assets.graphics.reserves.goldenRidgeReserve.path,
+    "RESERVE:TROLLSPORET_NATURE_RESERVE": Assets.graphics.reserves.trollsporetNatureReserve.path,
+    "RESERVE:AGUAS_CLARAS_MUNICIPIO": Assets.graphics.reserves.aguasClarasMunicipio.path,
+    "RESERVE:IZILO_ZASENDULO": Assets.graphics.reserves.iziloZasendulo.path
+  };
+
   static final Map<String, String> _fish = {
     "FISH:LEPOMIS_GIBBOSUS": Assets.graphics.fish.pumpkinseed.path,
     "FISH:LEPOMIS_MACROCHIRUS": Assets.graphics.fish.bluegill.path,
@@ -101,6 +108,10 @@ class Graphics {
       case ProcessType.info:
         throw UnimplementedError();
     }
+  }
+
+  static String getReserve(String id) {
+    return _reserve[id]!;
   }
 
   static String getFish(String id) {
