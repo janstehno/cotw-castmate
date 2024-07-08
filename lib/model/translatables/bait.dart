@@ -19,9 +19,7 @@ class Bait extends Translatable {
   factory Bait.fromJson(Map<String, dynamic> json) {
     return Bait(
       id: json["ID"],
-      type: BaitType.values.firstWhere((e) {
-        return e.name.toLowerCase() == json["TYPE"].split(":").elementAt(1).toLowerCase();
-      }),
+      type: BaitType.values.firstWhere((e) => e.name.toLowerCase() == json["TYPE"].toLowerCase()),
       ground: json["GROUND"],
     );
   }

@@ -33,7 +33,7 @@ class Graphics {
     "FISH:CHELON_RAMADA": Assets.graphics.fish.thinlipMullet.path,
     "FISH:SCARDINIUS_ERYTHROPHTHALMUS": Assets.graphics.fish.rudd.path,
     "FISH:PERCA_FLUVIATILIS": Assets.graphics.fish.europeanPerch.path,
-    "FISH:LA_MONSTRENCA": Assets.graphics.fish.laMonstrenca.path,
+    "FISH:LA_MOSTRENCA": Assets.graphics.fish.laMostrenca.path,
     "FISH:LABEOBARBUS_AENEUS": Assets.graphics.fish.smallmouthYellowfish.path,
     "FISH:LEPOMIS_CYANELLUS": Assets.graphics.fish.greenSunfish.path,
     "FISH:CHETIA_FLAVIVENTRIS": Assets.graphics.fish.canaryKurper.path,

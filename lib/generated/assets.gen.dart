@@ -121,7 +121,7 @@ class $AssetsGraphicsFishGen {
 
   AssetGenImage get kokaneeSalmon => const AssetGenImage('assets/graphics/fish/kokanee_salmon.png');
 
-  AssetGenImage get laMonstrenca => const AssetGenImage('assets/graphics/fish/la_monstrenca.png');
+  AssetGenImage get laMostrenca => const AssetGenImage('assets/graphics/fish/la_mostrenca.png');
 
   AssetGenImage get lakeTrout => const AssetGenImage('assets/graphics/fish/lake_trout.png');
 
@@ -231,7 +231,7 @@ class $AssetsGraphicsFishGen {
         ide,
         kallePaulTheDominator,
         kokaneeSalmon,
-        laMonstrenca,
+        laMostrenca,
         lakeTrout,
         largemouthBass,
         largemouthYellowfish,
