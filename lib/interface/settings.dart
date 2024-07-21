@@ -5,11 +5,13 @@ class Settings extends ChangeNotifier {
   static const List<Locale> languageCodes = [
     Locale("en"),
     Locale("es"),
+    Locale("fr"),
   ];
 
   final List<String> _languages = [
     "English",
     "Español",
+    "Français",
   ];
 
   late int _language;
