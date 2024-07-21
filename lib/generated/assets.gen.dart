@@ -117,9 +117,13 @@ class $AssetsGraphicsFishGen {
 
   AssetGenImage get greenSunfish => const AssetGenImage('assets/graphics/fish/green_sunfish.png');
 
+  AssetGenImage get grootslang => const AssetGenImage('assets/graphics/fish/grootslang.png');
+
   AssetGenImage get ide => const AssetGenImage('assets/graphics/fish/ide.png');
 
   AssetGenImage get kallePaulTheDominator => const AssetGenImage('assets/graphics/fish/kalle_paul_the_dominator.png');
+
+  AssetGenImage get karooMermaid => const AssetGenImage('assets/graphics/fish/karoo_mermaid.png');
 
   AssetGenImage get kokaneeSalmon => const AssetGenImage('assets/graphics/fish/kokanee_salmon.png');
 
@@ -130,6 +134,8 @@ class $AssetsGraphicsFishGen {
   AssetGenImage get largemouthBass => const AssetGenImage('assets/graphics/fish/largemouth_bass.png');
 
   AssetGenImage get largemouthYellowfish => const AssetGenImage('assets/graphics/fish/largemouth_yellowfish.png');
+
+  AssetGenImage get mamlambo => const AssetGenImage('assets/graphics/fish/mamlambo.png');
 
   AssetGenImage get mirrorCarp => const AssetGenImage('assets/graphics/fish/mirror_carp.png');
 
@@ -230,13 +236,16 @@ class $AssetsGraphicsFishGen {
         grassCarp,
         grayling,
         greenSunfish,
+        grootslang,
         ide,
         kallePaulTheDominator,
+        karooMermaid,
         kokaneeSalmon,
         laMostrenca,
         lakeTrout,
         largemouthBass,
         largemouthYellowfish,
+        mamlambo,
         mirrorCarp,
         moggel,
         mountainWhitefish,

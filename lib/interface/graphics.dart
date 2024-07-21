@@ -83,7 +83,10 @@ class Graphics {
     "FISH:POMOXIS_ANNULARIS": Assets.graphics.fish.whiteCrappie.path,
     "FISH:AMBLOPLITES_RUPESTRIS": Assets.graphics.fish.rockBass.path,
     "FISH:APLODINOTUS_GRUNNIENS": Assets.graphics.fish.freshwaterDrum.path,
-    "FISH:SILURUS_GLANIS": Assets.graphics.fish.welsCatfish.path
+    "FISH:SILURUS_GLANIS": Assets.graphics.fish.welsCatfish.path,
+    "FISH:GROOTSLANG": Assets.graphics.fish.grootslang.path,
+    "FISH:KAROO_MERMAID": Assets.graphics.fish.karooMermaid.path,
+    "FISH:MAMLAMBO": Assets.graphics.fish.mamlambo.path
   };
 
   static String getTechniqueIcon(TechniqueType techniqueType) {
