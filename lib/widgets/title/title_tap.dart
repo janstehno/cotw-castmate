@@ -7,8 +7,11 @@ class WidgetTitleTap extends WidgetTitle {
   const WidgetTitleTap(
     super.text, {
     super.key,
+    super.subtext,
     required Function onTap,
   }) : _onTap = onTap;
+
+  Function get onTap => _onTap;
 
   @override
   Widget buildWidgets() {

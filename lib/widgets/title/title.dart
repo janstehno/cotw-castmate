@@ -22,7 +22,7 @@ class WidgetTitle extends StatelessWidget {
 
   Color get background => Interface.title;
 
-  Widget _buildText() {
+  Widget buildText() {
     if (_subtext.isEmpty) {
       return WidgetText(
         _text.toUpperCase(),
@@ -56,7 +56,7 @@ class WidgetTitle extends StatelessWidget {
         background: background,
         child: Row(
           children: [
-            Expanded(child: WidgetMargin.right(30, child: _buildText())),
+            Expanded(child: WidgetMargin.right(30, child: buildText())),
           ],
         ),
       ),

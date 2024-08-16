@@ -1,19 +1,23 @@
+enum MapRegion {
+  goldenRidgeReserve,
+  trollsporetNatureReserve,
+  aguasClarasMunicipio,
+  iziloZasendulo,
+}
+
 enum ProcessType {
   success,
   error,
   info,
 }
 
-enum MarkerType {
-  lookoutTower,
-  outpost,
-  trailhead,
-  fishingSpot,
-  warden,
-  pointOfInterest,
-  shop,
-  vista,
-  challengeBoard,
+enum LocationType {
+  fastTravelLocation,
+  nonFastTravelLocation,
+  fish,
+  collectible,
+  mission,
+  scavengerHunt,
 }
 
 enum HabitatType {

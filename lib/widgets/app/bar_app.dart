@@ -40,11 +40,8 @@ class WidgetAppBar extends StatelessWidget {
   Widget _buildLeft() {
     return GestureDetector(
       onTap: () {
-        if (_onTap != null) {
-          _onTap!();
-        } else {
-          Navigator.pop(_context);
-        }
+        if (_onTap != null) _onTap!();
+        Navigator.pop(_context);
       },
       child: Container(
         width: 80,

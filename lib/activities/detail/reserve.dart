@@ -1,3 +1,4 @@
+import 'package:cotwcastmate/builders/map.dart';
 import 'package:cotwcastmate/interface/graphics.dart';
 import 'package:cotwcastmate/interface/interface.dart';
 import 'package:cotwcastmate/interface/style.dart';
@@ -8,6 +9,7 @@ import 'package:cotwcastmate/widgets/app/padding.dart';
 import 'package:cotwcastmate/widgets/app/scaffold.dart';
 import 'package:cotwcastmate/widgets/text/text.dart';
 import 'package:cotwcastmate/widgets/title/title.dart';
+import 'package:cotwcastmate/widgets/title/title_map_tap.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_shadow/simple_shadow.dart';
@@ -67,6 +69,12 @@ class DetailReserve extends StatelessWidget {
     );
   }
 
+  Widget _buildMap(BuildContext context) {
+    return WidgetTitleMapTap(tr("UI:MAP"), reserve: _reserve, onTap: () {
+      Navigator.push(context, MaterialPageRoute(builder: (e) => BuilderMap(reserve: _reserve)));
+    });
+  }
+
   List<Widget> _listFish() {
     return [
       WidgetTitle(tr("UI:FISH")),
@@ -83,6 +91,7 @@ class DetailReserve extends StatelessWidget {
       children: [
         _buildImage(),
         _buildName(),
+        _buildMap(context),
         ..._listFish(),
       ],
     );

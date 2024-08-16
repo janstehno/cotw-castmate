@@ -23,6 +23,10 @@ class WidgetSectionTap extends StatelessWidget {
 
   String get text => _text;
 
+  Color get background => _background;
+
+  Function? get onTap => _onTap;
+
   Widget buildCenter() {
     return WidgetPadding.h30(
       background: _background,
