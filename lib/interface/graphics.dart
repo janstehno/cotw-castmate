@@ -89,6 +89,53 @@ class Graphics {
     "FISH:MAMLAMBO": Assets.graphics.fish.mamlambo.path
   };
 
+  static final Map<String, String> _location = {
+    "MARKER:OUTPOST": Assets.graphics.icons.markerOutpost,
+    "MARKER:TRAILHEAD": Assets.graphics.icons.markerTrailhead,
+    "MARKER:POINT_OF_INTEREST": Assets.graphics.icons.markerPointOfInterest,
+    "MARKER:LOOKOUT_TOWER": Assets.graphics.icons.markerLookoutTower,
+    "MARKER:VISTA": Assets.graphics.icons.markerVista,
+    "MARKER:FISHING_SPOT": Assets.graphics.icons.markerFishingSpot,
+    "MARKER:CHALLENGE": Assets.graphics.icons.markerChallenge,
+    "MARKER:CAR": Assets.graphics.icons.markerCar,
+    "MARKER:BOAT": Assets.graphics.icons.markerBoat,
+    "MARKER:NOTE": Assets.graphics.icons.markerNote,
+    "MARKER:FIGURE": Assets.graphics.icons.markerFigure,
+    "MARKER:COIN": Assets.graphics.icons.markerCoin,
+    "MARKER:LOST_ITEM": Assets.graphics.icons.markerLostItem,
+    "MARKER:PETRIFIED_TREE": Assets.graphics.icons.markerPetrifiedTree,
+    "MARKER:FLOATING_WEATHER_STATION": Assets.graphics.icons.markerFloatingWeatherStation,
+    "MARKER:ENGELMANN_SPRUCE": Assets.graphics.icons.markerEngelmannSpruce,
+    "MARKER:GPS_STATION": Assets.graphics.icons.markerGpsStation,
+    "MARKER:WEATHER_STATION": Assets.graphics.icons.markerWeatherStation,
+    "MARKER:PURPLE_LOOSETRIFE": Assets.graphics.icons.markerPurpleLoosetrife,
+    "MARKER:WATER_HYACINTH": Assets.graphics.icons.markerWaterHyacinth,
+    "MARKER:DOUGLAS_FIR": Assets.graphics.icons.markerDouglasFir,
+    "MARKER:OXEYE_DAISY": Assets.graphics.icons.markerOxeyeDaisy,
+    "MARKER:HOUNDSTONGUE": Assets.graphics.icons.markerHoundstongue,
+    "MARKER:ORANGE_HAWKWEED": Assets.graphics.icons.markerOrangeHawkweed,
+    "MARKER:YELLOW_TOADFLAX": Assets.graphics.icons.markerYellowToadflax,
+    "MARKER:BIGFOOT_TRACK": Assets.graphics.icons.markerBigfootTrack,
+    "MARKER:DINOSAUR_BONE": Assets.graphics.icons.markerDinosaurBone,
+    "MARKER:WHITE_PINE": Assets.graphics.icons.markerWhitePine,
+    "MARKER:CARVING": Assets.graphics.icons.markerCarving,
+    "MARKER:CACHE": Assets.graphics.icons.markerCache,
+    "MARKER:PAINTING": Assets.graphics.icons.markerPainting,
+    "MARKER:FOOD": Assets.graphics.icons.markerFood,
+    "MARKER:SKETCH": Assets.graphics.icons.markerSketch,
+    "MARKER:FOSSEGRIMFJORDEN_SCAVENGER_HUNT_1": Assets.graphics.icons.scavengerHunt5,
+    "MARKER:FOSSEGRIMFJORDEN_SCAVENGER_HUNT_2": Assets.graphics.icons.scavengerHunt5,
+    "MARKER:HULDRASKOGEN_SCAVANGER_HUNT_1": Assets.graphics.icons.scavengerHunt5,
+    "MARKER:HULDRASKOGEN_SCAVANGER_HUNT_2": Assets.graphics.icons.scavengerHunt5,
+    "MARKER:NOKKENSJOEN_SCAVANGER_HUNT_1": Assets.graphics.icons.scavengerHunt5,
+    "MARKER:NOKKENSJOEN_SCAVANGER_HUNT_2": Assets.graphics.icons.scavengerHunt5,
+    "SCAVENGERHUNT_1": Assets.graphics.icons.scavengerHunt1,
+    "SCAVENGERHUNT_2": Assets.graphics.icons.scavengerHunt2,
+    "SCAVENGERHUNT_3": Assets.graphics.icons.scavengerHunt3,
+    "SCAVENGERHUNT_4": Assets.graphics.icons.scavengerHunt4,
+    "SCAVENGERHUNT_5": Assets.graphics.icons.scavengerHunt5,
+  };
+
   static String getTechniqueIcon(TechniqueType techniqueType) {
     switch (techniqueType) {
       case TechniqueType.constant:
@@ -119,5 +166,33 @@ class Graphics {
 
   static String getFish(String id) {
     return _fish[id]!;
+  }
+
+  static String getTile(MapRegion region, int x, int y, int z) {
+    int gridSize, correction;
+
+    switch (z) {
+      case 1:
+        gridSize = 4;
+        correction = 1;
+        break;
+      case 2:
+        gridSize = 8;
+        correction = 2;
+        break;
+      case 3:
+        gridSize = 16;
+        correction = 4;
+        break;
+      default:
+        throw Exception("Zoom level: $z is not supported");
+    }
+
+    int i = (y + correction) * gridSize + (x + correction);
+    return "assets/graphics/maps/${region.name.toLowerCase()}/$z/$i.png";
+  }
+
+  static String getLocation(String id) {
+    return _location[id]!;
   }
 }

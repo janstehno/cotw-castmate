@@ -33,6 +33,8 @@ class $AssetsRawGen {
 
   String get lures => 'assets/raw/lures.json';
 
+  $AssetsRawMapsGen get maps => const $AssetsRawMapsGen();
+
   String get reserves => 'assets/raw/reserves.json';
 
   String get traits => 'assets/raw/traits.json';
@@ -301,6 +303,72 @@ class $AssetsGraphicsIconsGen {
 
   String get github => 'assets/graphics/icons/github.svg';
 
+  String get markerBigfootTrack => 'assets/graphics/icons/marker_bigfoot_track.svg';
+
+  String get markerBoat => 'assets/graphics/icons/marker_boat.svg';
+
+  String get markerCache => 'assets/graphics/icons/marker_cache.svg';
+
+  String get markerCar => 'assets/graphics/icons/marker_car.svg';
+
+  String get markerCarving => 'assets/graphics/icons/marker_carving.svg';
+
+  String get markerChallenge => 'assets/graphics/icons/marker_challenge.svg';
+
+  String get markerCoin => 'assets/graphics/icons/marker_coin.svg';
+
+  String get markerDinosaurBone => 'assets/graphics/icons/marker_dinosaur_bone.svg';
+
+  String get markerDouglasFir => 'assets/graphics/icons/marker_douglas_fir.svg';
+
+  String get markerEngelmannSpruce => 'assets/graphics/icons/marker_engelmann_spruce.svg';
+
+  String get markerFigure => 'assets/graphics/icons/marker_figure.svg';
+
+  String get markerFishingSpot => 'assets/graphics/icons/marker_fishing_spot.svg';
+
+  String get markerFloatingWeatherStation => 'assets/graphics/icons/marker_floating_weather_station.svg';
+
+  String get markerFood => 'assets/graphics/icons/marker_food.svg';
+
+  String get markerGpsStation => 'assets/graphics/icons/marker_gps_station.svg';
+
+  String get markerHoundstongue => 'assets/graphics/icons/marker_houndstongue.svg';
+
+  String get markerLookoutTower => 'assets/graphics/icons/marker_lookout_tower.svg';
+
+  String get markerLostItem => 'assets/graphics/icons/marker_lost_item.svg';
+
+  String get markerNote => 'assets/graphics/icons/marker_note.svg';
+
+  String get markerOrangeHawkweed => 'assets/graphics/icons/marker_orange_hawkweed.svg';
+
+  String get markerOutpost => 'assets/graphics/icons/marker_outpost.svg';
+
+  String get markerOxeyeDaisy => 'assets/graphics/icons/marker_oxeye_daisy.svg';
+
+  String get markerPainting => 'assets/graphics/icons/marker_painting.svg';
+
+  String get markerPetrifiedTree => 'assets/graphics/icons/marker_petrified_tree.svg';
+
+  String get markerPointOfInterest => 'assets/graphics/icons/marker_point_of_interest.svg';
+
+  String get markerPurpleLoosetrife => 'assets/graphics/icons/marker_purple_loosetrife.svg';
+
+  String get markerSketch => 'assets/graphics/icons/marker_sketch.svg';
+
+  String get markerTrailhead => 'assets/graphics/icons/marker_trailhead.svg';
+
+  String get markerVista => 'assets/graphics/icons/marker_vista.svg';
+
+  String get markerWaterHyacinth => 'assets/graphics/icons/marker_water_hyacinth.svg';
+
+  String get markerWeatherStation => 'assets/graphics/icons/marker_weather_station.svg';
+
+  String get markerWhitePine => 'assets/graphics/icons/marker_white_pine.svg';
+
+  String get markerYellowToadflax => 'assets/graphics/icons/marker_yellow_toadflax.svg';
+
   String get patreon => 'assets/graphics/icons/patreon.svg';
 
   String get paypal => 'assets/graphics/icons/paypal.svg';
@@ -310,6 +378,16 @@ class $AssetsGraphicsIconsGen {
   String get reddit => 'assets/graphics/icons/reddit.svg';
 
   String get reserve => 'assets/graphics/icons/reserve.svg';
+
+  String get scavengerHunt1 => 'assets/graphics/icons/scavenger_hunt_1.svg';
+
+  String get scavengerHunt2 => 'assets/graphics/icons/scavenger_hunt_2.svg';
+
+  String get scavengerHunt3 => 'assets/graphics/icons/scavenger_hunt_3.svg';
+
+  String get scavengerHunt4 => 'assets/graphics/icons/scavenger_hunt_4.svg';
+
+  String get scavengerHunt5 => 'assets/graphics/icons/scavenger_hunt_5.svg';
 
   String get search => 'assets/graphics/icons/search.svg';
 
@@ -337,11 +415,49 @@ class $AssetsGraphicsIconsGen {
         filter,
         fish,
         github,
+        markerBigfootTrack,
+        markerBoat,
+        markerCache,
+        markerCar,
+        markerCarving,
+        markerChallenge,
+        markerCoin,
+        markerDinosaurBone,
+        markerDouglasFir,
+        markerEngelmannSpruce,
+        markerFigure,
+        markerFishingSpot,
+        markerFloatingWeatherStation,
+        markerFood,
+        markerGpsStation,
+        markerHoundstongue,
+        markerLookoutTower,
+        markerLostItem,
+        markerNote,
+        markerOrangeHawkweed,
+        markerOutpost,
+        markerOxeyeDaisy,
+        markerPainting,
+        markerPetrifiedTree,
+        markerPointOfInterest,
+        markerPurpleLoosetrife,
+        markerSketch,
+        markerTrailhead,
+        markerVista,
+        markerWaterHyacinth,
+        markerWeatherStation,
+        markerWhitePine,
+        markerYellowToadflax,
         patreon,
         paypal,
         post,
         reddit,
         reserve,
+        scavengerHunt1,
+        scavengerHunt2,
+        scavengerHunt3,
+        scavengerHunt4,
+        scavengerHunt5,
         search,
         settings,
         swipeRight,
@@ -386,6 +502,20 @@ class $AssetsGraphicsReservesGen {
 
   List<AssetGenImage> get values =>
       [aguasClarasMunicipio, goldenRidgeReserve, iziloZasendulo, trollsporetNatureReserve];
+}
+
+class $AssetsRawMapsGen {
+  const $AssetsRawMapsGen();
+
+  String get aguasClarasMunicipio => 'assets/raw/maps/aguas-claras-municipio.json';
+
+  String get goldenRidgeReserve => 'assets/raw/maps/golden-ridge-reserve.json';
+
+  String get iziloZasendulo => 'assets/raw/maps/izilo-zasendulo.json';
+
+  String get trollsporetNatureReserve => 'assets/raw/maps/trollsporet-nature-reserve.json';
+
+  List<String> get values => [aguasClarasMunicipio, goldenRidgeReserve, iziloZasendulo, trollsporetNatureReserve];
 }
 
 class Assets {

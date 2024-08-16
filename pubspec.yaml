@@ -51,17 +51,31 @@ flutter_gen:
     exclude:
       - assets/fonts/*
       - assets/translations/*
+      - assets/graphics/maps/**/*
 
 flutter:
   uses-material-design: true
   assets:
     - assets/raw/
+    - assets/raw/maps/
     - assets/fonts/
     - assets/translations/
     - assets/graphics/icons/
     - assets/graphics/images/
     - assets/graphics/fish/
     - assets/graphics/reserves/
+    - assets/graphics/maps/goldenridgereserve/1/
+    - assets/graphics/maps/goldenridgereserve/2/
+    - assets/graphics/maps/goldenridgereserve/3/
+    - assets/graphics/maps/trollsporetnaturereserve/1/
+    - assets/graphics/maps/trollsporetnaturereserve/2/
+    - assets/graphics/maps/trollsporetnaturereserve/3/
+    - assets/graphics/maps/aguasclarasmunicipio/1/
+    - assets/graphics/maps/aguasclarasmunicipio/2/
+    - assets/graphics/maps/aguasclarasmunicipio/3/
+    - assets/graphics/maps/izilozasendulo/1/
+    - assets/graphics/maps/izilozasendulo/2/
+    - assets/graphics/maps/izilozasendulo/3/
   fonts:
     - family: Normal
       fonts:
