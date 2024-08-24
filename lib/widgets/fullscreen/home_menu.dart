@@ -1,5 +1,4 @@
 import 'package:cotwcastmate/activities/about.dart';
-import 'package:cotwcastmate/activities/list/fish.dart';
 import 'package:cotwcastmate/activities/list/reserves.dart';
 import 'package:cotwcastmate/activities/settings.dart';
 import 'package:cotwcastmate/generated/assets.gen.dart';
@@ -34,7 +33,6 @@ class WidgetHomeMenu extends StatefulWidget {
 class WidgetHomeMenuState extends State<WidgetHomeMenu> {
   final List<List<dynamic>> _general = [
     ["UI:RESERVES", Assets.graphics.icons.reserve, const ListReserves()],
-    ["UI:FISH", Assets.graphics.icons.fish, const ListFish()],
   ];
 
   Widget _buildMenuItem(String text, String icon, Widget activity, BuildContext context) {

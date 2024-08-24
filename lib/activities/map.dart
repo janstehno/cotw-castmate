@@ -7,7 +7,6 @@ import 'package:cotwcastmate/miscellaneous/projection.dart';
 import 'package:cotwcastmate/model/map/map_location.dart';
 import 'package:cotwcastmate/model/map/map_position.dart';
 import 'package:cotwcastmate/widgets/button/button_icon.dart';
-import 'package:cotwcastmate/widgets/indicator/loading_indicator.dart';
 import 'package:cotwcastmate/widgets/maps/marker.dart';
 import 'package:cotwcastmate/widgets/maps/marker_fish.dart';
 import 'package:flutter/material.dart';
@@ -186,11 +185,10 @@ class ActivityMapState extends State<ActivityMap> {
     return FutureBuilder<List<Widget>>(
       future: _listLocations(),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: WidgetLoadingIndicator());
-        } else if (snapshot.hasError) {
-          return const SizedBox.shrink();
-        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+        if (snapshot.connectionState == ConnectionState.waiting ||
+            snapshot.hasError ||
+            !snapshot.hasData ||
+            snapshot.data!.isEmpty) {
           return const SizedBox.shrink();
         } else {
           return Stack(fit: StackFit.expand, children: snapshot.data!);

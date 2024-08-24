@@ -46,7 +46,6 @@ class BuilderMapState extends BuilderBuilderState {
   Future<Map<String, dynamic>> loadData() async {
     Map<String, dynamic> mapObjects = await _helperMap.readMapObjects(_reserves[_helperMap.reserve.id]);
     updateProgress("mapObjects", mapObjects);
-    await Future.delayed(const Duration(seconds: 1), () {});
     return loadedData;
   }
 

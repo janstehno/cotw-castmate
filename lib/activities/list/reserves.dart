@@ -1,4 +1,3 @@
-import 'package:collection/collection.dart';
 import 'package:cotwcastmate/activities/detail/reserve.dart';
 import 'package:cotwcastmate/activities/list/items.dart';
 import 'package:cotwcastmate/helpers/filter.dart';
@@ -17,7 +16,7 @@ class ListReserves extends ListItems {
 
 class ListReservesState extends ListItemsState<Reserve> {
   @override
-  List<Reserve> get items => HelperFilter.filterReserves(controller.text).sorted(Reserve.sortByName);
+  List<Reserve> get items => HelperFilter.filterReserves(controller.text).toList();
 
   @override
   void onTap(Reserve item) {
