@@ -6,9 +6,7 @@ import 'package:cotwcastmate/generated/assets.gen.dart';
 import 'package:cotwcastmate/miscellaneous/enums.dart';
 import 'package:cotwcastmate/miscellaneous/values.dart';
 import 'package:cotwcastmate/model/connect/fish_bait.dart';
-import 'package:cotwcastmate/model/connect/fish_hook.dart';
 import 'package:cotwcastmate/model/connect/fish_lure.dart';
-import 'package:cotwcastmate/model/connect/fish_reserve.dart';
 import 'package:cotwcastmate/model/connect/fish_tackle.dart';
 import 'package:cotwcastmate/model/hook.dart';
 import 'package:cotwcastmate/model/translatables/bait.dart';
@@ -27,10 +25,8 @@ class HelperJSON {
   static final Set<Bait> baits = {};
   static final Set<Lure> lures = {};
   static final Set<Hook> hooks = {};
-  static final Set<FishReserve> fishReserves = {};
   static final Set<FishBait> fishBaits = {};
   static final Set<FishLure> fishLures = {};
-  static final Set<FishHook> fishHooks = {};
 
   static void setup(
     Set<Reserve> a,
@@ -40,10 +36,8 @@ class HelperJSON {
     Set<Bait> e,
     Set<Lure> f,
     Set<Hook> g,
-    Set<FishReserve> h,
-    Set<FishBait> i,
-    Set<FishLure> j,
-    Set<FishHook> k,
+    Set<FishBait> h,
+    Set<FishLure> i,
   ) {
     _clearLists();
     reserves.addAll(a);
@@ -53,10 +47,8 @@ class HelperJSON {
     baits.addAll(e);
     lures.addAll(f);
     hooks.addAll(g);
-    fishReserves.addAll(h);
-    fishBaits.addAll(i);
-    fishLures.addAll(j);
-    fishHooks.addAll(k);
+    fishBaits.addAll(h);
+    fishLures.addAll(i);
   }
 
   static void _clearLists() {
@@ -67,10 +59,8 @@ class HelperJSON {
     baits.clear();
     lures.clear();
     hooks.clear();
-    fishReserves.clear();
     fishBaits.clear();
     fishLures.clear();
-    fishHooks.clear();
   }
 
   static Reserve getReserve(String id) {
@@ -82,7 +72,7 @@ class HelperJSON {
   }
 
   static Set<Fish> getReserveFish(String id) {
-    return fish.where((fish) => fishReserves.where((e) => e.reserve == id && e.fish == fish.id).isNotEmpty).toSet();
+    return fish.where((e) => e.reserve == id).toSet();
   }
 
   static Fish getFish(String id) {
@@ -93,12 +83,9 @@ class HelperJSON {
     }
   }
 
-  static Set<FishReserve> getFishReserves(String fishId) {
-    return fishReserves.where((e) => e.fish == fishId).toSet();
-  }
-
-  static Set<FishHook> getFishHooks(String fishId) {
-    return fishHooks.where((e) => e.fish == fishId).toSet();
+  static Set<Reserve> getFishReserves(String fishId) {
+    List<Fish> f = fish.where((e) => e.id == fishId).toList();
+    return f.map((e) => getReserve(e.reserve)).toSet();
   }
 
   static Set<FishBait> getFishBaits(String fishId) {
@@ -158,41 +145,35 @@ class HelperJSON {
     }
   }
 
-  static Future<Map<String, Map<String, double>>> getTackleEffectiveness(Fish fish, TackleType tackleType) async {
-    Map<String, Map<String, double>> tackleEffectiveness = {};
+  static Future<Map<String, double>> getTackleEffectiveness(Fish fish, TackleType tackleType) async {
+    Map<String, double> tackleEffectiveness = {};
     if (fish.isLegendary) return tackleEffectiveness;
 
-    Set<FishReserve> fishReserves = getFishReserves(fish.id);
-    for (FishReserve reserve in fishReserves) {
-      Map<String, double> effectiveness = {};
+    Set<Fish> reserveFish = _getFilteredReserveFish(fish, getReserve(fish.reserve));
+    Set<FishTackle> tackles = _getFishTackles(fish.id, tackleType);
 
-      Set<Fish> reserveFish = _getFilteredReserveFish(fish, reserve);
-      Set<FishTackle> tackles = _getFishTackles(fish.id, tackleType);
-
-      for (FishTackle tackle in tackles) {
-        Set<Fish> relevantFish = _getRelevantFishForTackle(reserveFish, tackle, tackleType);
-        double totalEffectivenessWeight = _calculateTotalEffectivenessWeight(relevantFish, tackle, tackleType);
-        effectiveness[tackle.tackle] = totalEffectivenessWeight;
-      }
-
-      effectiveness.updateAll((key, value) => value * 10);
-      tackleEffectiveness[reserve.reserve] = effectiveness;
+    for (FishTackle tackle in tackles) {
+      Set<Fish> relevantFish = _getRelevantFishForTackle(reserveFish, tackle, tackleType);
+      double totalEffectivenessWeight = _calculateTotalEffectivenessWeight(relevantFish, tackle, tackleType);
+      tackleEffectiveness[tackle.tackle] = totalEffectivenessWeight;
     }
+
+    tackleEffectiveness.updateAll((key, value) => value * 10);
 
     return tackleEffectiveness;
   }
 
-  static Set<Fish> _getFilteredReserveFish(Fish fish, FishReserve reserve) {
+  static Set<Fish> _getFilteredReserveFish(Fish fish, Reserve reserve) {
     Set<String> habitats = fish.habitats.map((e) => e.toString()).toSet();
-    Set<Fish> reserveFish = HelperJSON.getReserveFish(reserve.reserve);
+    Set<Fish> reserveFish = HelperJSON.getReserveFish(reserve.id);
     reserveFish.removeWhere((e) => e.id == fish.id);
     reserveFish.removeWhere((e) {
       return e.habitats.where((h) => habitats.contains(h)).length < min(habitats.length, Values.commonHabitatCount);
     });
 
-    Set<Hook> hooks = HelperJSON.getFishHooks(fish.id).map((e) => HelperJSON.getHook(e.hook)).toSet();
+    Set<Hook> hooks = fish.hooks.entries.map((e) => HelperJSON.getHook(e.key)).toSet();
     reserveFish.removeWhere((e) {
-      Set<Hook> fishHooks = HelperJSON.getFishHooks(e.id).map((e) => HelperJSON.getHook(e.hook)).toSet();
+      Set<Hook> fishHooks = e.hooks.entries.map((h) => HelperJSON.getHook(h.key)).toSet();
       int commonHookCount = fishHooks.where((e) => hooks.contains(e)).length;
       return commonHookCount < min(hooks.length, Values.commonHookCount);
     });
@@ -284,12 +265,6 @@ class HelperJSON {
     return list.map((e) => Hook.fromJson(e)).toSet();
   }
 
-  static Future<Set<FishReserve>> readFishReserves() async {
-    final data = await getData(Assets.raw.fishReserves);
-    final list = json.decode(data) as List<dynamic>;
-    return list.map((e) => FishReserve.fromJson(e)).toSet();
-  }
-
   static Future<Set<FishBait>> readFishBaits() async {
     final data = await getData(Assets.raw.fishBaits);
     final list = json.decode(data) as List<dynamic>;
@@ -300,11 +275,5 @@ class HelperJSON {
     final data = await getData(Assets.raw.fishLures);
     final list = json.decode(data) as List<dynamic>;
     return list.map((e) => FishLure.fromJson(e)).toSet();
-  }
-
-  static Future<Set<FishHook>> readFishHooks() async {
-    final data = await getData(Assets.raw.fishHooks);
-    final list = json.decode(data) as List<dynamic>;
-    return list.map((e) => FishHook.fromJson(e)).toSet();
   }
 }

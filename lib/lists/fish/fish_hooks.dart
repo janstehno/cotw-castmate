@@ -1,5 +1,4 @@
 import 'package:collection/collection.dart';
-import 'package:cotwcastmate/helpers/json.dart';
 import 'package:cotwcastmate/miscellaneous/enums.dart';
 import 'package:cotwcastmate/model/connect/fish_hook.dart';
 import 'package:cotwcastmate/model/translatables/fish.dart';
@@ -14,16 +13,14 @@ class ListFishHooks extends StatelessWidget {
     super.key,
   }) : _fish = fish;
 
-  Set<FishHook> get _hooks => HelperJSON.getFishHooks(_fish.id);
-
   List<HookSize> get _hookSizes => HookSize.values;
 
   List<Widget> _listHooks(double width) {
     return _hookSizes.map((e) {
-      FishHook? fishHook = _hooks.firstWhereOrNull((h) {
-        return "h${HelperJSON.getHook(h.hook).size.replaceAll("/", "_")}" == e.name;
-      });
-      if (fishHook != null) {
+      MapEntry<String, dynamic>? hook =
+          _fish.hooks.entries.firstWhereOrNull((h) => e.name == "h${h.key.split(":")[1].replaceAll("/", "_")}");
+      if (hook != null) {
+        FishHook fishHook = FishHook(fish: _fish.id, hook: hook.key, trophy: hook.value);
         return WidgetFishHook(fishHook: fishHook, width: width);
       } else {
         return WidgetFishHook(hookSize: e, width: width);

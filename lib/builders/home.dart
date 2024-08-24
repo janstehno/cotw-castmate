@@ -4,9 +4,7 @@ import 'package:cotwcastmate/activities/home.dart';
 import 'package:cotwcastmate/builders/builder.dart';
 import 'package:cotwcastmate/helpers/json.dart';
 import 'package:cotwcastmate/model/connect/fish_bait.dart';
-import 'package:cotwcastmate/model/connect/fish_hook.dart';
 import 'package:cotwcastmate/model/connect/fish_lure.dart';
-import 'package:cotwcastmate/model/connect/fish_reserve.dart';
 import 'package:cotwcastmate/model/hook.dart';
 import 'package:cotwcastmate/model/translatables/bait.dart';
 import 'package:cotwcastmate/model/translatables/fish.dart';
@@ -38,23 +36,9 @@ class BuilderHomeState extends BuilderBuilderState {
     Set<Bait> baits = snapshot.data!["baits"] ?? [];
     Set<Lure> lures = snapshot.data!["lures"] ?? [];
     Set<Hook> hooks = snapshot.data!["hooks"] ?? [];
-    Set<FishReserve> fishReserves = snapshot.data!["fishReserves"] ?? [];
     Set<FishBait> fishBaits = snapshot.data!["fishBaits"] ?? [];
     Set<FishLure> fishLures = snapshot.data!["fishLures"] ?? [];
-    Set<FishHook> fishHooks = snapshot.data!["fishHooks"] ?? [];
-    HelperJSON.setup(
-      reserves,
-      habitats,
-      fish,
-      traits,
-      baits,
-      lures,
-      hooks,
-      fishReserves,
-      fishBaits,
-      fishLures,
-      fishHooks,
-    );
+    HelperJSON.setup(reserves, habitats, fish, traits, baits, lures, hooks, fishBaits, fishLures);
   }
 
   @override
@@ -73,14 +57,10 @@ class BuilderHomeState extends BuilderBuilderState {
     updateProgress("lures", lures);
     Set<Hook> hooks = await HelperJSON.readHooks();
     updateProgress("hooks", hooks);
-    Set<FishReserve> fishReserves = await HelperJSON.readFishReserves();
-    updateProgress("fishReserves", fishReserves);
     Set<FishBait> fishBaits = await HelperJSON.readFishBaits();
     updateProgress("fishBaits", fishBaits);
     Set<FishLure> fishLures = await HelperJSON.readFishLures();
     updateProgress("fishLures", fishLures);
-    Set<FishHook> fishHooks = await HelperJSON.readFishHooks();
-    updateProgress("fishHooks", fishHooks);
 
     await Future.delayed(const Duration(seconds: 1), () {});
     return loadedData;

@@ -25,7 +25,7 @@ class BuilderFish extends BuilderBuilder {
 }
 
 class BuilderFishState extends BuilderBuilderState {
-  final Map<String, List<Map<String, double>>> _tackleEffectiveness = {};
+  final List<Map<String, double>> _tackleEffectiveness = [];
 
   late final bool _tackleEffectivenessOff;
 
@@ -45,31 +45,21 @@ class BuilderFishState extends BuilderBuilderState {
 
   @override
   void initializeData(AsyncSnapshot<Map<String, dynamic>> snapshot, BuildContext context) {
-    Map<String, Map<String, double>> fishBaitsEffectiveness = snapshot.data!["fishBaitsEffectiveness"] ?? {};
-    Map<String, Map<String, double>> fishLuresEffectiveness = snapshot.data!["fishLuresEffectiveness"] ?? {};
+    Map<String, double> fishBaitsEffectiveness = snapshot.data!["fishBaitsEffectiveness"] ?? {};
+    Map<String, double> fishLuresEffectiveness = snapshot.data!["fishLuresEffectiveness"] ?? {};
 
-    if (fishBaitsEffectiveness.isNotEmpty) {
-      for (String key in fishBaitsEffectiveness.keys) {
-        _tackleEffectiveness[key] = [];
-        _tackleEffectiveness[key]!.add(fishBaitsEffectiveness[key]!);
-        if (fishLuresEffectiveness.isNotEmpty) _tackleEffectiveness[key]!.add(fishLuresEffectiveness[key]!);
-      }
-    } else if (fishLuresEffectiveness.isNotEmpty) {
-      for (String key in fishBaitsEffectiveness.keys) {
-        _tackleEffectiveness[key] = [];
-        _tackleEffectiveness[key]!.add(fishLuresEffectiveness[key]!);
-      }
-    }
+    _tackleEffectiveness.add(fishBaitsEffectiveness);
+    _tackleEffectiveness.add(fishLuresEffectiveness);
   }
 
   @override
   Future<Map<String, dynamic>> loadData() async {
     if (_tackleEffectivenessOff || (widget as BuilderFish).fish.isLegendary) return {};
 
-    Map<String, Map<String, double>> fishBaitsEffectiveness =
+    Map<String, double> fishBaitsEffectiveness =
         await HelperJSON.getTackleEffectiveness((widget as BuilderFish).fish, TackleType.bait);
     updateProgress("fishBaitsEffectiveness", fishBaitsEffectiveness);
-    Map<String, Map<String, double>> fishLuresEffectiveness =
+    Map<String, double> fishLuresEffectiveness =
         await HelperJSON.getTackleEffectiveness((widget as BuilderFish).fish, TackleType.lure);
     updateProgress("fishLuresEffectiveness", fishLuresEffectiveness);
 

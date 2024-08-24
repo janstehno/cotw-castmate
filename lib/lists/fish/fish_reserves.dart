@@ -1,7 +1,6 @@
 import 'package:cotwcastmate/helpers/json.dart';
 import 'package:cotwcastmate/interface/interface.dart';
 import 'package:cotwcastmate/interface/style.dart';
-import 'package:cotwcastmate/model/connect/fish_reserve.dart';
 import 'package:cotwcastmate/model/translatables/fish.dart';
 import 'package:cotwcastmate/model/translatables/reserve.dart';
 import 'package:cotwcastmate/widgets/text/text.dart';
@@ -15,7 +14,7 @@ class ListFishReserves extends StatelessWidget {
     super.key,
   }) : _fish = fish;
 
-  List<FishReserve> get _reserves => HelperJSON.getFishReserves(_fish.id).toList();
+  List<Reserve> get _reserves => HelperJSON.getFishReserves(_fish.id).toList();
 
   Widget _buildReserve(Reserve reserve) {
     return WidgetText(
@@ -26,7 +25,7 @@ class ListFishReserves extends StatelessWidget {
   }
 
   List<Widget> _listReserves() {
-    return _reserves.map((e) => _buildReserve(HelperJSON.getReserve(e.reserve))).toList();
+    return _reserves.map((e) => _buildReserve(HelperJSON.getReserve(e.id))).toList();
   }
 
   Widget _buildWidgets() {

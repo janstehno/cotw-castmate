@@ -1,4 +1,3 @@
-import 'package:cotwcastmate/helpers/json.dart';
 import 'package:cotwcastmate/interface/graphics.dart';
 import 'package:cotwcastmate/interface/interface.dart';
 import 'package:cotwcastmate/interface/settings.dart';
@@ -11,35 +10,26 @@ import 'package:cotwcastmate/lists/fish/fish_reserves.dart';
 import 'package:cotwcastmate/lists/fish/fish_traits.dart';
 import 'package:cotwcastmate/lists/fish/fish_weights.dart';
 import 'package:cotwcastmate/miscellaneous/utils.dart';
-import 'package:cotwcastmate/miscellaneous/values.dart';
-import 'package:cotwcastmate/model/connect/fish_reserve.dart';
 import 'package:cotwcastmate/model/translatables/fish.dart';
-import 'package:cotwcastmate/model/translatables/reserve.dart';
 import 'package:cotwcastmate/widgets/app/bar_app.dart';
 import 'package:cotwcastmate/widgets/app/divider.dart';
-import 'package:cotwcastmate/widgets/app/margin.dart';
 import 'package:cotwcastmate/widgets/app/padding.dart';
 import 'package:cotwcastmate/widgets/app/scaffold.dart';
-import 'package:cotwcastmate/widgets/indicator/page_indicator.dart';
 import 'package:cotwcastmate/widgets/text/text.dart';
 import 'package:cotwcastmate/widgets/title/title.dart';
-import 'package:cotwcastmate/widgets/title/title_sub.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 
 class DetailFish extends StatelessWidget {
   final Fish _fish;
-  final Map<String, List<Map<String, double>>> _tackleEffectiveness;
+  final List<Map<String, double>> _tackleEffectiveness;
 
-  final PageController _pageController = PageController();
-
-  DetailFish({
+  const DetailFish({
     super.key,
     required Fish fish,
-    required Map<String, List<Map<String, double>>> tackleEffectiveness,
+    required List<Map<String, double>> tackleEffectiveness,
   })  : _fish = fish,
         _tackleEffectiveness = tackleEffectiveness;
 
@@ -180,89 +170,12 @@ class DetailFish extends StatelessWidget {
     ];
   }
 
-  Widget _buildPageIndicator(int length) {
-    return WidgetMargin.bottom(
-      25,
-      child: WidgetPageIndicator(
-        length,
-        height: Values.dotSize,
-        iColor: Interface.disabled,
-        aColor: Interface.primaryAccent,
-        pageController: _pageController,
-      ),
-    );
-  }
-
-  Widget _buildReserve(String reserve) {
-    return WidgetMargin.fromLTRB(
-      0,
-      20,
-      0,
-      5,
-      child: WidgetPadding.h30(
-        alignment: Alignment.center,
-        child: WidgetText(
-          reserve,
-          color: Interface.primaryLight.withOpacity(0.6),
-          style: Style.normal.s16.w600l2,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildPage([
-    Reserve? reserve,
-    Map<String, double>? fishBaitsEffectiveness,
-    Map<String, double>? fishLuresEffectiveness,
-    bool? enoughReserves,
-  ]) {
-    return Column(
-      children: [
-        ListFishBaits(_fish, effectiveness: fishBaitsEffectiveness),
-        ListFishLures(_fish, effectiveness: fishLuresEffectiveness),
-        if (reserve != null && enoughReserves!) ...[
-          WidgetSubtitle(tr("UI:RESERVE")),
-          _buildReserve(reserve.name),
-        ],
-      ],
-    );
-  }
-
-  List<Widget> _listPages(bool enoughReserves) {
-    return _tackleEffectiveness.keys.map((e) {
-      return _buildPage(
-        HelperJSON.getReserve(e),
-        _tackleEffectiveness[e]!.first,
-        _tackleEffectiveness[e]!.last,
-        enoughReserves,
-      );
-    }).toList();
-  }
-
-  List<Widget> _listExpandablePageView(BuildContext context) {
-    if (_tackleEffectiveness.isNotEmpty) {
-      Set<FishReserve> fishReserves = HelperJSON.getFishReserves(_fish.id);
-      bool enoughReserves = fishReserves.length > 1;
-
-      return [
-        ExpandablePageView(
-          pageSnapping: true,
-          controller: _pageController,
-          scrollDirection: Axis.horizontal,
-          children: _listPages(enoughReserves),
-        ),
-        if (enoughReserves) _buildPageIndicator(fishReserves.length),
-      ];
-    }
-    return [_buildPage()];
-  }
-
   Widget _buildWidgets(BuildContext context) {
     bool imperialUnits = Provider.of<Settings>(context, listen: false).imperialUnits;
 
     return WidgetScaffold(
       appBar: WidgetAppBar(
-        tr("UI:FISH"),
+        tr(_fish.reserve),
         context: context,
       ),
       children: [
@@ -272,14 +185,11 @@ class DetailFish extends StatelessWidget {
         _buildReserves(),
         _buildWeight(imperialUnits),
         ..._listTraits(),
-        Column(
-          children: [
-            if (_fish.habitats.isNotEmpty) ..._listHabitats(),
-            if (_fish.weights(imperialUnits).isNotEmpty) ..._listWeightDistribution(),
-            ..._listHookDistribution(),
-            ..._listExpandablePageView(context),
-          ],
-        ),
+        if (_fish.habitats.isNotEmpty) ..._listHabitats(),
+        if (_fish.weights(imperialUnits).isNotEmpty) ..._listWeightDistribution(),
+        ..._listHookDistribution(),
+        ListFishBaits(_fish, effectiveness: _tackleEffectiveness.firstOrNull),
+        ListFishLures(_fish, effectiveness: _tackleEffectiveness.lastOrNull),
       ],
     );
   }
