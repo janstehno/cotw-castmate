@@ -1,5 +1,5 @@
 class Values {
-  static const String version = "1.0.7";
+  static const String version = "1.0.8";
 
   static const double appBar = 90;
   static const double snackBar = 75;
