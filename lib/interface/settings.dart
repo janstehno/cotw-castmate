@@ -17,19 +17,24 @@ class Settings extends ChangeNotifier {
   late int _language;
   late bool _imperialUnits;
   late bool _tackleEffectiveness;
+  late bool _tackleTrophyRange;
   late SharedPreferences _sharedPreferences;
 
   Settings({
     required language,
     required imperialUnits,
     required tackleEffectiveness,
+    required tackleTrophyRange,
   })  : _language = language,
         _imperialUnits = imperialUnits,
-        _tackleEffectiveness = tackleEffectiveness;
+        _tackleEffectiveness = tackleEffectiveness,
+        _tackleTrophyRange = tackleTrophyRange;
 
   bool get imperialUnits => _imperialUnits;
 
   bool get tackleEffectiveness => _tackleEffectiveness;
+
+  bool get tackleTrophyRange => _tackleTrophyRange;
 
   int get language => _language;
 
@@ -57,6 +62,13 @@ class Settings extends ChangeNotifier {
     _sharedPreferences = await SharedPreferences.getInstance();
     _tackleEffectiveness = !_tackleEffectiveness;
     await _sharedPreferences.setBool("tackleEffectiveness", _tackleEffectiveness);
+    notifyListeners();
+  }
+
+  Future<void> changeTackleTrophyRange() async {
+    _sharedPreferences = await SharedPreferences.getInstance();
+    _tackleTrophyRange = !_tackleTrophyRange;
+    await _sharedPreferences.setBool("tackleTrophyRange", _tackleTrophyRange);
     notifyListeners();
   }
 }

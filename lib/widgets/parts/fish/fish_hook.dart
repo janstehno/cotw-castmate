@@ -10,15 +10,18 @@ class WidgetFishHook extends StatelessWidget {
   final FishHook? _fishHook;
   final HookSize? _hookSize;
   final double _width;
+  final double _height;
 
   const WidgetFishHook({
     super.key,
     FishHook? fishHook,
     HookSize? hookSize,
     required double width,
+    double? height,
   })  : _fishHook = fishHook,
         _hookSize = hookSize,
-        _width = width;
+        _width = width,
+        _height = height ?? 25;
 
   Color get _color =>
       _fishHook == null ? Interface.disabled : (_fishHook!.isGold ? Interface.primaryDark : Interface.primaryLight);
@@ -33,17 +36,17 @@ class WidgetFishHook extends StatelessWidget {
     return WidgetText(
       _text,
       color: _color,
-      style: Style.normal.s16.w600,
+      style: _height >= 25 ? Style.normal.s16.w600 : Style.normal.s10.w600,
     );
   }
 
   Widget _buildWidgets() {
     return Container(
-      height: 25,
+      height: _height,
       width: _width,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(_height / 5),
         color: _background,
       ),
       child: _buildText(),

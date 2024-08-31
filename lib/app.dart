@@ -17,6 +17,7 @@ void main() async {
   int language = sharedPreferences.getInt("language") ?? 0;
   bool imperialUnits = sharedPreferences.getBool("imperialUnits") ?? false;
   bool tackleEffectiveness = sharedPreferences.getBool("tackleEffectiveness") ?? false;
+  bool tackleTrophyRange = sharedPreferences.getBool("tackleTrophyRange") ?? false;
   runApp(
     EasyLocalization(
       path: "assets/translations",
@@ -30,6 +31,7 @@ void main() async {
           language: language,
           imperialUnits: imperialUnits,
           tackleEffectiveness: tackleEffectiveness,
+          tackleTrophyRange: tackleTrophyRange,
         ),
         child: const App(),
       ),

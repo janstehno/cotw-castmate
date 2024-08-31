@@ -125,6 +125,33 @@ class ActivitySettingsState extends State<ActivitySettings> {
     ];
   }
 
+  Widget _buildTackleTrophyDistributionDescription() {
+    return WidgetPadding.h30(
+      child: WidgetText(
+        tr("UI:TACKLE_TROPHY_RANGE_DESCRIPTION"),
+        color: Interface.disabled,
+        style: Style.normal.s12.w400,
+        autoSize: false,
+      ),
+    );
+  }
+
+  List<Widget> _listTackleTrophyRange() {
+    return [
+      WidgetSectionTapAlign(
+        tr("UI:TACKLE_TROPHY_RANGE"),
+        active: _settings.tackleTrophyRange,
+        indicatorRight: false,
+        onTap: () {
+          setState(() {
+            _settings.changeTackleTrophyRange();
+          });
+        },
+      ),
+      _buildTackleTrophyDistributionDescription(),
+    ];
+  }
+
   Widget _buildWidgets() {
     return WidgetScaffold(
       appBar: WidgetAppBar(
@@ -136,6 +163,7 @@ class ActivitySettingsState extends State<ActivitySettings> {
         ..._listUnits(),
         WidgetTitle(tr("UI:INTERFACE")),
         ..._listTackleEffectiveness(),
+        ..._listTackleTrophyRange(),
       ],
     );
   }

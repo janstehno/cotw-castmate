@@ -163,7 +163,10 @@ class DetailFish extends StatelessWidget {
 
   List<Widget> _listHookDistribution() {
     return [
-      WidgetTitle(tr("UI:HOOK_DISTRIBUTION")),
+      WidgetTitle(
+        tr("UI:HOOK_DISTRIBUTION"),
+        subtext: tr("UI:HOOK_DISTRIBUTION_DESCRIPTION"),
+      ),
       WidgetPadding.a30(
         child: ListFishHooks(_fish),
       ),
@@ -172,6 +175,7 @@ class DetailFish extends StatelessWidget {
 
   Widget _buildWidgets(BuildContext context) {
     bool imperialUnits = Provider.of<Settings>(context, listen: false).imperialUnits;
+    bool tackleTrophyRange = Provider.of<Settings>(context, listen: false).tackleTrophyRange;
 
     return WidgetScaffold(
       appBar: WidgetAppBar(
@@ -188,8 +192,8 @@ class DetailFish extends StatelessWidget {
         if (_fish.habitats.isNotEmpty) ..._listHabitats(),
         if (_fish.weights(imperialUnits).isNotEmpty) ..._listWeightDistribution(),
         ..._listHookDistribution(),
-        ListFishBaits(_fish, effectiveness: _tackleEffectiveness.firstOrNull),
-        ListFishLures(_fish, effectiveness: _tackleEffectiveness.lastOrNull),
+        ListFishBaits(_fish, effectiveness: _tackleEffectiveness.firstOrNull, tackleTrophyRange: tackleTrophyRange),
+        ListFishLures(_fish, effectiveness: _tackleEffectiveness.lastOrNull, tackleTrophyRange: tackleTrophyRange),
       ],
     );
   }

@@ -4,19 +4,23 @@ import 'package:cotwcastmate/interface/style.dart';
 import 'package:cotwcastmate/model/connect/fish_tackle.dart';
 import 'package:cotwcastmate/model/translatables/fish.dart';
 import 'package:cotwcastmate/widgets/icon/icon.dart';
+import 'package:cotwcastmate/widgets/parts/fish/tackle_hooks.dart';
 import 'package:cotwcastmate/widgets/text/text.dart';
 import 'package:flutter/material.dart';
 
 abstract class ListFishTackles<I extends FishTackle> extends StatelessWidget {
   final Fish _fish;
   final Map<String, double> _effectiveness;
+  final bool _tackleTrophyRange;
 
   ListFishTackles(
     Fish fish, {
     super.key,
     Map<String, double>? effectiveness,
+    required tackleTrophyRange,
   })  : _fish = fish,
-        _effectiveness = effectiveness ?? {};
+        _effectiveness = effectiveness ?? {},
+        _tackleTrophyRange = tackleTrophyRange;
 
   Fish get fish => _fish;
 
@@ -63,6 +67,7 @@ abstract class ListFishTackles<I extends FishTackle> extends StatelessWidget {
       height: 25,
       child: Row(
         children: [
+          if (!_fish.isLegendary && _tackleTrophyRange) WidgetTackleHooks(_fish, tackle: tackle),
           Expanded(
             child: Row(
               mainAxisSize: MainAxisSize.max,

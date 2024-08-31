@@ -16,6 +16,7 @@ class ListFishLures extends ListFishTackles<FishLure> {
     super.fish, {
     super.key,
     super.effectiveness,
+    super.tackleTrophyRange,
   });
 
   @override
