@@ -9,6 +9,9 @@ class FishLure extends FishTackle {
     required super.strength,
   }) : super(tackle: lure);
 
+  @override
+  Lure get getTackle => HelperJSON.getLure(tackle);
+
   factory FishLure.fromJson(Map<String, dynamic> json) {
     return FishLure(
       fish: json["FISH"],

@@ -1,6 +1,7 @@
 import 'package:cotwcastmate/helpers/json.dart';
 import 'package:cotwcastmate/miscellaneous/enums.dart';
 import 'package:cotwcastmate/model/connect/fish_tackle.dart';
+import 'package:cotwcastmate/model/translatables/bait.dart';
 
 class FishBait extends FishTackle {
   FishBait({
@@ -8,6 +9,9 @@ class FishBait extends FishTackle {
     required String bait,
     required super.strength,
   }) : super(tackle: bait);
+
+  @override
+  Bait get getTackle => HelperJSON.getBait(tackle);
 
   BaitType get type => HelperJSON.getBait(tackle).type;
 

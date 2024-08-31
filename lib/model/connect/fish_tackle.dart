@@ -21,6 +21,8 @@ abstract class FishTackle {
 
   int get strength => _strength;
 
+  dynamic get getTackle;
+
   Color get strengthColor {
     if (_strength == 3) return Interface.gold;
     if (_strength == 2) return Interface.silver;
