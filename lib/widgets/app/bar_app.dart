@@ -57,7 +57,7 @@ class WidgetAppBar extends StatelessWidget {
     return WidgetText(
       _text.toUpperCase(),
       color: Interface.primaryDark,
-      style: Style.normal.s24.w800,
+      style: Style.normal.s22.w800,
       maxLines: _maxLines,
       textAlign: TextAlign.right,
     );

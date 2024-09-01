@@ -17,7 +17,7 @@ class $StyleNormal {
 
   $StyleNormalSize20 get s20 => const $StyleNormalSize20();
 
-  $StyleNormalSize24 get s24 => const $StyleNormalSize24();
+  $StyleNormalSize22 get s22 => const $StyleNormalSize22();
 }
 
 class $StyleNormalSize8 {
@@ -75,7 +75,7 @@ class $StyleNormalSize16 {
 
   TextStyle get w600 => w400.copyWith(fontWeight: FontWeight.w600);
 
-  TextStyle get w600l2 => w400.copyWith(fontWeight: FontWeight.w600, letterSpacing: 2);
+  TextStyle get w600l2 => w400.copyWith(fontWeight: FontWeight.w600, letterSpacing: 1.5);
 }
 
 class $StyleNormalSize18 {
@@ -86,7 +86,7 @@ class $StyleNormalSize18 {
         fontWeight: FontWeight.w400,
         fontFamily: FontFamily.normal,
         height: Values.bigLineHeight,
-        letterSpacing: 2,
+        letterSpacing: 1.5,
       );
 }
 
@@ -98,21 +98,21 @@ class $StyleNormalSize20 {
         fontWeight: FontWeight.w400,
         fontFamily: FontFamily.normal,
         height: Values.bigLineHeight,
-        letterSpacing: 2,
+        letterSpacing: 1.5,
       );
 
   TextStyle get w600 => w400.copyWith(fontWeight: FontWeight.w600);
 }
 
-class $StyleNormalSize24 {
-  const $StyleNormalSize24();
+class $StyleNormalSize22 {
+  const $StyleNormalSize22();
 
   TextStyle get w400 => const TextStyle(
-        fontSize: 24,
+        fontSize: 22,
         fontWeight: FontWeight.w400,
         fontFamily: FontFamily.normal,
         height: Values.bigLineHeight,
-        letterSpacing: 2,
+        letterSpacing: 1.5,
       );
 
   TextStyle get w600 => w400.copyWith(fontWeight: FontWeight.w600);
@@ -120,8 +120,20 @@ class $StyleNormalSize24 {
   TextStyle get w800 => w400.copyWith(fontWeight: FontWeight.w800);
 }
 
+class $StyleCondensed {
+  const $StyleCondensed();
+
+  TextStyle get s14 => const TextStyle(
+        fontSize: 14,
+        fontFamily: FontFamily.condensed,
+        height: Values.smallLineHeight,
+      );
+}
+
 class Style {
   Style._();
 
   static const $StyleNormal normal = $StyleNormal();
+
+  static const $StyleCondensed condensed = $StyleCondensed();
 }

@@ -73,7 +73,7 @@ class WidgetHomeMenuState extends State<WidgetHomeMenu> {
         child: WidgetText(
           tr("UI:GENERAL").toUpperCase(),
           color: Interface.primaryLight,
-          style: Style.normal.s24.w600,
+          style: Style.normal.s22.w600,
         ),
       ),
       ..._general.map((e) => _buildMenuItem(e.elementAt(0), e.elementAt(1), e.elementAt(2), context)),
