@@ -30,7 +30,7 @@ class HelperMap {
 
   List<MapLocation> get shownFishLocations {
     List<MapLocation> shownLocations = [];
-    for (MapLocation location in _objects["UI:FISH"]!) {
+    for (MapLocation location in _objects["UI:POPULATION"]!) {
       if (location.shown) shownLocations.add(location);
     }
     return shownLocations;

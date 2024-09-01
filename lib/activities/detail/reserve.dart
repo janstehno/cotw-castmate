@@ -77,7 +77,7 @@ class DetailReserve extends StatelessWidget {
 
   List<Widget> _listFish() {
     return [
-      WidgetTitle(tr("UI:FISH")),
+      WidgetTitle(tr("UI:POPULATION")),
       ListReserveFish(_reserve),
     ];
   }

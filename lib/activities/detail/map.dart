@@ -69,10 +69,10 @@ class DetailMapState extends State<DetailMap> {
   Widget _buildSection(String key) {
     return Column(
       children: [
-        if (key == "UI:FISH")
+        if (key == "UI:POPULATION")
           WidgetTitleTap(
             tr(key),
-            subtext: tr("UI:FISH_LOCATION_SOURCE"),
+            subtext: tr("UI:POPULATION_LOCATION_SOURCE"),
             onTap: () {
               setState(() {
                 widget.helperMap.activateAll(key);

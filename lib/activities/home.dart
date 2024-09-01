@@ -11,6 +11,7 @@ import 'package:cotwcastmate/widgets/fullscreen/home_menu.dart';
 import 'package:cotwcastmate/widgets/icon/icon.dart';
 import 'package:cotwcastmate/widgets/text/text.dart';
 import 'package:cotwcastmate/widgets/text/text_pattern.dart';
+import 'package:cotwcastmate/widgets/text/text_split.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -35,17 +36,7 @@ class ActivityHomeState extends State<ActivityHome> {
         WidgetText(
           "COTW CASTMATE",
           color: Interface.primaryDark,
-          style: Style.normal.s24.w800,
-        ),
-        WidgetText(
-          tr("UI:NOT_OFFICIAL").toUpperCase(),
-          color: Interface.primaryDark.withOpacity(0.4),
-          style: Style.normal.s8.w400,
-        ),
-        WidgetText(
-          Values.version,
-          color: Interface.primaryDark.withOpacity(0.4),
-          style: Style.normal.s12.w600,
+          style: Style.normal.s22.w800,
         ),
       ],
     );
@@ -101,6 +92,18 @@ class ActivityHomeState extends State<ActivityHome> {
           _buildLinks(),
         ],
       ),
+    );
+  }
+
+  Widget _buildSubHeader() {
+    return WidgetTextSplit(
+      leftText: tr("UI:NOT_OFFICIAL").toUpperCase(),
+      rightText: Values.version,
+      leftColor: Interface.primaryDark,
+      rightColor: Interface.primaryDark,
+      leftBackground: Interface.primaryLight,
+      rightBackground: Interface.primaryAccentLight,
+      split: 0.6,
     );
   }
 
@@ -170,6 +173,7 @@ class ActivityHomeState extends State<ActivityHome> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildHeader(),
+            _buildSubHeader(),
             Expanded(child: _buildSwipe()),
             _buildDisclaimer(),
           ],

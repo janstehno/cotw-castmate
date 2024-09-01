@@ -1,14 +1,15 @@
 import 'package:cotwcastmate/activities/detail/map.dart';
-import 'package:cotwcastmate/generated/assets.gen.dart';
 import 'package:cotwcastmate/helpers/map.dart';
 import 'package:cotwcastmate/interface/graphics.dart';
 import 'package:cotwcastmate/interface/interface.dart';
 import 'package:cotwcastmate/miscellaneous/projection.dart';
+import 'package:cotwcastmate/miscellaneous/values.dart';
 import 'package:cotwcastmate/model/map/map_location.dart';
 import 'package:cotwcastmate/model/map/map_position.dart';
-import 'package:cotwcastmate/widgets/button/button_icon.dart';
 import 'package:cotwcastmate/widgets/maps/marker.dart';
 import 'package:cotwcastmate/widgets/maps/marker_fish.dart';
+import 'package:cotwcastmate/widgets/text/text_split_tap.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:latlng/latlng.dart';
 import 'package:map/map.dart';
@@ -37,9 +38,6 @@ class ActivityMapState extends State<ActivityMap> {
     projection: const MapProjection(),
   );
 
-  final double _verticalPadding = 15;
-  final double _horizontalPadding = 15;
-
   late MapTransformer _mapTransformer;
   late double _tileSize;
 
@@ -63,7 +61,7 @@ class ActivityMapState extends State<ActivityMap> {
   void _getScreenSize() {
     Size size = MediaQuery.of(context).size;
     _screenWidth = size.width;
-    _screenHeight = size.height;
+    _screenHeight = size.height - Values.split;
   }
 
   void _getTileSize(Orientation orientation) {
@@ -252,28 +250,20 @@ class ActivityMapState extends State<ActivityMap> {
     );
   }
 
-  Widget _buildBack() {
-    return Positioned(
-      top: _verticalPadding,
-      left: _horizontalPadding,
-      child: WidgetButtonIcon(
-        Assets.graphics.icons.back,
-        color: Interface.primary,
-        background: Interface.primaryDark.withOpacity(0.9),
-        onTap: () => Navigator.pop(context),
-      ),
-    );
-  }
-
-  Widget _buildFilter() {
-    return Positioned(
-      bottom: _verticalPadding,
-      right: _horizontalPadding,
-      child: WidgetButtonIcon(
-        Assets.graphics.icons.filter,
-        color: Interface.primary,
-        background: Interface.primaryDark.withOpacity(0.9),
-        onTap: () {
+  Widget _buildMenu() {
+    return SizedBox(
+      width: _screenWidth,
+      child: WidgetTextSplitTap(
+        split: 0.3,
+        forwardSlash: false,
+        leftText: tr("UI:BACK"),
+        rightText: tr("UI:FILTER"),
+        leftColor: Interface.primaryDark,
+        rightColor: Interface.primaryLight,
+        leftBackground: Interface.primaryAccent,
+        rightBackground: Interface.primaryDark,
+        leftTap: () => Navigator.pop(context),
+        rightTap: () {
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -298,16 +288,8 @@ class ActivityMapState extends State<ActivityMap> {
         color: Interface.primaryDark,
         child: Column(
           children: [
-            Expanded(
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  _buildMap(orientation),
-                  _buildBack(),
-                  _buildFilter(),
-                ],
-              ),
-            ),
+            Expanded(child: _buildMap(orientation)),
+            _buildMenu(),
           ],
         ),
       ),

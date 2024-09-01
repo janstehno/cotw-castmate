@@ -9,6 +9,7 @@ class Interface {
   static const Color primary = Color(0xFFFFC805);
   static const Color primaryLight = Color(0xFFFFFFFF);
 
+  static const Color primaryAccentLight = Color(0xFF77CEDA);
   static const Color primaryAccent = Color(0xFF34ADBD);
   static const Color primaryAccentDarker = Color(0xFF205866);
   static const Color primaryAccentDark = Color(0xFF121322);
