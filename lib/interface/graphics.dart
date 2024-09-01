@@ -161,11 +161,11 @@ class Graphics {
   }
 
   static String getReserve(String id) {
-    return _reserve[id]!;
+    return _reserve[id] ?? Assets.graphics.images.fallback.path;
   }
 
   static String getFish(String id) {
-    return _fish[id]!;
+    return _fish[id] ?? Assets.graphics.images.fallback.path;
   }
 
   static String getTile(MapRegion region, int x, int y, int z) {

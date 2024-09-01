@@ -21,11 +21,7 @@ class $AssetsRawGen {
 
   String get fishBaits => 'assets/raw/fish_baits.json';
 
-  String get fishHooks => 'assets/raw/fish_hooks.json';
-
   String get fishLures => 'assets/raw/fish_lures.json';
-
-  String get fishReserves => 'assets/raw/fish_reserves.json';
 
   String get habitats => 'assets/raw/habitats.json';
 
@@ -39,8 +35,7 @@ class $AssetsRawGen {
 
   String get traits => 'assets/raw/traits.json';
 
-  List<String> get values =>
-      [baits, fish, fishBaits, fishHooks, fishLures, fishReserves, habitats, hooks, lures, reserves, traits];
+  List<String> get values => [baits, fish, fishBaits, fishLures, habitats, hooks, lures, reserves, traits];
 }
 
 class $AssetsGraphicsFishGen {
@@ -476,6 +471,8 @@ class $AssetsGraphicsImagesGen {
 
   AssetGenImage get cotw => const AssetGenImage('assets/graphics/images/cotw.png');
 
+  AssetGenImage get fallback => const AssetGenImage('assets/graphics/images/fallback.png');
+
   AssetGenImage get techniqueConstant => const AssetGenImage('assets/graphics/images/technique_constant.png');
 
   AssetGenImage get techniqueJigging => const AssetGenImage('assets/graphics/images/technique_jigging.png');
@@ -485,7 +482,7 @@ class $AssetsGraphicsImagesGen {
   AssetGenImage get techniqueTwitching => const AssetGenImage('assets/graphics/images/technique_twitching.png');
 
   List<AssetGenImage> get values =>
-      [blue, cotw, techniqueConstant, techniqueJigging, techniqueStopandgo, techniqueTwitching];
+      [blue, cotw, fallback, techniqueConstant, techniqueJigging, techniqueStopandgo, techniqueTwitching];
 }
 
 class $AssetsGraphicsReservesGen {
