@@ -14,7 +14,7 @@ enum ProcessType {
 enum LocationType {
   fastTravelLocation,
   nonFastTravelLocation,
-  fish,
+  population,
   collectible,
   mission,
   scavengerHunt,
