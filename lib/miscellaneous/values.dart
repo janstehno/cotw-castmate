@@ -12,6 +12,7 @@ class Values {
   static const double subtitle = 65;
   static const double section = 65;
   static const double menu = 40;
+  static const double split = 30;
 
   static const double dotSize = 7;
   static const double tapSize = 35;
