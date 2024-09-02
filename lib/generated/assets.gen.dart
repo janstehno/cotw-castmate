@@ -154,6 +154,8 @@ class $AssetsGraphicsFishGen {
 
   AssetGenImage get rednoseLabeo => const AssetGenImage('assets/graphics/fish/rednose_labeo.png');
 
+  AssetGenImage get riverCarpsucker => const AssetGenImage('assets/graphics/fish/river_carpsucker.png');
+
   AssetGenImage get roach => const AssetGenImage('assets/graphics/fish/roach.png');
 
   AssetGenImage get rockBass => const AssetGenImage('assets/graphics/fish/rock_bass.png');
@@ -167,6 +169,8 @@ class $AssetsGraphicsFishGen {
   AssetGenImage get shovelnoseSturgeon => const AssetGenImage('assets/graphics/fish/shovelnose_sturgeon.png');
 
   AssetGenImage get sidewinder => const AssetGenImage('assets/graphics/fish/sidewinder.png');
+
+  AssetGenImage get signalCrayfish => const AssetGenImage('assets/graphics/fish/signal_crayfish.png');
 
   AssetGenImage get smallmouthBass => const AssetGenImage('assets/graphics/fish/smallmouth_bass.png');
 
@@ -253,6 +257,7 @@ class $AssetsGraphicsFishGen {
         rainbowTrout,
         redbreastKurper,
         rednoseLabeo,
+        riverCarpsucker,
         roach,
         rockBass,
         rudd,
@@ -260,6 +265,7 @@ class $AssetsGraphicsFishGen {
         sauger,
         shovelnoseSturgeon,
         sidewinder,
+        signalCrayfish,
         smallmouthBass,
         smallmouthYellowfish,
         speilfinne,

@@ -86,7 +86,9 @@ class Graphics {
     "FISH:SILURUS_GLANIS": Assets.graphics.fish.welsCatfish.path,
     "FISH:GROOTSLANG": Assets.graphics.fish.grootslang.path,
     "FISH:KAROO_MERMAID": Assets.graphics.fish.karooMermaid.path,
-    "FISH:MAMLAMBO": Assets.graphics.fish.mamlambo.path
+    "FISH:MAMLAMBO": Assets.graphics.fish.mamlambo.path,
+    "FISH:CARPIODES_CARPIO": Assets.graphics.fish.riverCarpsucker.path,
+    "FISH:PACIFASTACUS_LENIUSCULUS": Assets.graphics.fish.signalCrayfish.path,
   };
 
   static final Map<String, String> _location = {
