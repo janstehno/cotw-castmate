@@ -6,12 +6,14 @@ class Settings extends ChangeNotifier {
     Locale("en"),
     Locale("es"),
     Locale("fr"),
+    Locale("de"),
   ];
 
   final List<String> _languages = [
     "English",
     "Español",
     "Français",
+    "Deutsch",
   ];
 
   late int _language;
