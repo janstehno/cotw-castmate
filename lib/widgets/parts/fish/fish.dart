@@ -27,7 +27,7 @@ class WidgetFish extends WidgetEntry<Fish> {
   Widget? buildSubText() {
     return WidgetText(
       entry.isLegendary ? entry.alternative : entry.latin!,
-      color: Interface.primaryLight.withOpacity(0.6),
+      color: Interface.primaryLight.withValues(alpha: 0.6),
       style: Style.normal.s12.w400i,
     );
   }

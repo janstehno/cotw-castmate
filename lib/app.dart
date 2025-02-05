@@ -62,7 +62,7 @@ class App extends StatelessWidget {
         thumbColor: WidgetStateProperty.all(Interface.primary),
       ),
       bottomSheetTheme: BottomSheetThemeData(
-        backgroundColor: Colors.black.withOpacity(0),
+        backgroundColor: Colors.black.withValues(alpha: 0),
       ),
       appBarTheme: const AppBarTheme(
         backgroundColor: Interface.primaryDark,

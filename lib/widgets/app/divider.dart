@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:cotwcastmate/interface/interface.dart';
+import 'package:flutter/material.dart';
 
 class WidgetDivider extends StatelessWidget {
   const WidgetDivider({
@@ -11,7 +11,7 @@ class WidgetDivider extends StatelessWidget {
       height: 2,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [Colors.transparent, Interface.primaryLight.withOpacity(0.2), Colors.transparent],
+          colors: [Colors.transparent, Interface.primaryLight.withValues(alpha: 0.2), Colors.transparent],
           stops: const [0, 0.5, 1],
         ),
       ),

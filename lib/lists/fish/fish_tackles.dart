@@ -48,7 +48,7 @@ abstract class ListFishTackles<I extends FishTackle> extends StatelessWidget {
       alignment: Alignment.center,
       child: WidgetText(
         effectiveness.round() == 0 ? "-" : "${effectiveness.round()}",
-        color: effectiveness == 0 ? Interface.disabled.withOpacity(0.2) : Interface.disabled,
+        color: effectiveness == 0 ? Interface.disabled.withValues(alpha: 0.2) : Interface.disabled,
         style: Style.normal.s16.w400i,
       ),
     );

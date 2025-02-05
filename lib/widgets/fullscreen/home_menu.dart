@@ -105,7 +105,7 @@ class WidgetHomeMenuState extends State<WidgetHomeMenu> {
       children: [
         WidgetTextTap(
           tr("UI:WIKI").toUpperCase(),
-          color: Interface.primaryLight.withOpacity(0.8),
+          color: Interface.primaryLight.withValues(alpha: 0.8),
           style: Style.normal.s8.w600,
           onTap: () => Utils.redirectTo(
             Uri.parse("https://github.com/janstehno/cotw-castmate/wiki"),
@@ -114,7 +114,7 @@ class WidgetHomeMenuState extends State<WidgetHomeMenu> {
         const SizedBox(width: 10),
         WidgetTextTap(
           tr("UI:PATCH_NOTES").toUpperCase(),
-          color: Interface.primaryLight.withOpacity(0.8),
+          color: Interface.primaryLight.withValues(alpha: 0.8),
           style: Style.normal.s8.w600,
           onTap: () => Utils.redirectTo(
             Uri.parse("https://github.com/janstehno/cotw-castmate/wiki/Patch-notes"),
@@ -123,7 +123,7 @@ class WidgetHomeMenuState extends State<WidgetHomeMenu> {
         const SizedBox(width: 10),
         WidgetTextTap(
           tr("UI:IDEAS").toUpperCase(),
-          color: Interface.primaryLight.withOpacity(0.8),
+          color: Interface.primaryLight.withValues(alpha: 0.8),
           style: Style.normal.s8.w600,
           onTap: () => Utils.redirectTo(
             Uri.parse("https://github.com/janstehno/cotw-castmate/discussions"),
@@ -132,7 +132,7 @@ class WidgetHomeMenuState extends State<WidgetHomeMenu> {
         const SizedBox(width: 10),
         WidgetTextTap(
           tr("UI:ISSUES").toUpperCase(),
-          color: Interface.primaryLight.withOpacity(0.8),
+          color: Interface.primaryLight.withValues(alpha: 0.8),
           style: Style.normal.s8.w600,
           onTap: () => Utils.redirectTo(
             Uri.parse("https://github.com/janstehno/cotw-castmate/issues"),
@@ -163,7 +163,7 @@ class WidgetHomeMenuState extends State<WidgetHomeMenu> {
   }
 
   Widget _buildShadow() {
-    return Container(color: Interface.primaryDark.withOpacity(0.4));
+    return Container(color: Interface.primaryDark.withValues(alpha: 0.4));
   }
 
   Widget _buildList() {

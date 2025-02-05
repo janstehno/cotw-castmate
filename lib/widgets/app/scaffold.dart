@@ -41,7 +41,7 @@ class WidgetScaffold extends StatelessWidget {
   }
 
   Widget _buildShadow() {
-    return Container(color: Interface.primaryDark.withOpacity(0.4));
+    return Container(color: Interface.primaryDark.withValues(alpha: 0.4));
   }
 
   Widget _buildBody(BuildContext context) {

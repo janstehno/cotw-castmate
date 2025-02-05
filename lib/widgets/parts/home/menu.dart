@@ -35,7 +35,7 @@ class WidgetSectionMenu extends WidgetSectionTap {
   Widget _buildText() {
     return WidgetText(
       super.text,
-      color: Interface.primaryLight.withOpacity(0.8),
+      color: Interface.primaryLight.withValues(alpha: 0.8),
       style: Style.normal.s18.w400,
     );
   }

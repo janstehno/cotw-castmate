@@ -39,7 +39,7 @@ class ListFishLures extends ListFishTackles<FishLure> {
           Graphics.getTechniqueIcon(TechniqueType.values.elementAt(i!)),
           color: HelperJSON.getLure(tackle.tackle).technique(i)
               ? tackle.strengthColor
-              : Interface.disabled.withOpacity(0.1),
+              : Interface.disabled.withValues(alpha: 0.1),
           fit: BoxFit.fitWidth,
         ),
       ),

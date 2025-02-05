@@ -241,7 +241,7 @@ class ActivityMapState extends State<ActivityMap> {
           child: Stack(
             children: [
               _buildTileLayer(),
-              Container(color: Interface.primaryDark.withOpacity(0.2)),
+              Container(color: Interface.primaryDark.withValues(alpha: 0.2)),
               if (_render) _buildLocations(),
             ],
           ),

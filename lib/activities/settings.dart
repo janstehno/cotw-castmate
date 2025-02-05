@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:cotwcastmate/interface/interface.dart';
 import 'package:cotwcastmate/interface/settings.dart';
 import 'package:cotwcastmate/interface/style.dart';
@@ -30,21 +31,28 @@ class ActivitySettings extends StatefulWidget {
 class ActivitySettingsState extends State<ActivitySettings> {
   Settings get _settings => Provider.of<Settings>(context, listen: false);
 
-  DropdownMenuItem _buildDropdownItem(String language) {
-    return WidgetDropDownItem(
-      text: _settings.getLocaleName(_settings.languages.indexOf(language)),
-      value: _settings.languages.indexOf(language),
+  final Map<String, String> localeSubtexts = {
+    "de": "by Fufi",
+  };
+
+  DropdownMenuItem _buildDropdownItem(int index) {
+    return DropdownMenuItem(
+      value: index,
+      child: WidgetDropDownItem(
+        text: _settings.getLocaleName(index),
+        subtext: localeSubtexts[_settings.getLocale(index).languageCode],
+      ),
     );
   }
 
   List<DropdownMenuItem> _listLanguages() {
-    return _settings.languages.map((e) => _buildDropdownItem(e)).toList();
+    return _settings.languages.mapIndexed((i, e) => _buildDropdownItem(i)).toList();
   }
 
   List<Widget> _listLanguage() {
     return [
       WidgetTitle(tr("UI:LANGUAGE")),
-      WidgetDropDown(
+      WidgetDropDown<int>(
         value: _settings.language,
         items: _listLanguages(),
         onChange: (dynamic value) {

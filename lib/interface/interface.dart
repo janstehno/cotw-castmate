@@ -29,7 +29,7 @@ class Interface {
   static const Color snackSuccess = Color(0xFF8FCE63);
   static const Color snackError = Color(0xFFEF524A);
 
-  static Color none = disabled.withOpacity(0.1);
+  static Color none = disabled.withValues(alpha: 0.1);
   static const Color juvenile = dark1A;
   static const Color bronze = Color(0xFF6D4C41);
   static const Color silver = Color(0xFF546E7A);
@@ -67,15 +67,15 @@ class Interface {
     Color(0xFF5B473F),
   ];
 
-  static Color odd = primaryDark.withOpacity(0.4);
-  static Color even = primaryDark.withOpacity(0.2);
+  static Color odd = primaryDark.withValues(alpha: 0.4);
+  static Color even = primaryDark.withValues(alpha: 0.2);
 
-  static Color title = primaryDark.withOpacity(0.6);
-  static Color subtitle = title.withOpacity(0.4);
+  static Color title = primaryDark.withValues(alpha: 0.6);
+  static Color subtitle = title.withValues(alpha: 0.4);
 
-  static Color additional = primaryLight.withOpacity(0.6);
-  static Color disabled = primaryLight.withOpacity(0.4);
-  static Color dropDown = primaryDark.withOpacity(0.8);
+  static Color additional = primaryLight.withValues(alpha: 0.6);
+  static Color disabled = primaryLight.withValues(alpha: 0.4);
+  static Color dropDown = primaryDark.withValues(alpha: 0.8);
 
   static InputBorder get textFieldBorder => const OutlineInputBorder(
         borderSide: BorderSide(width: 0.05, color: Colors.transparent),

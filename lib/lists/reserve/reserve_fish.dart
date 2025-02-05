@@ -22,7 +22,8 @@ class ListReserveFish extends StatelessWidget {
     return WidgetFish(
       index: index,
       entry: fish,
-      background: fish.isLegendary ? Interface.legendary.withOpacity(0.1) : Utils.backgroundAt(_fish.indexOf(fish)),
+      background:
+          fish.isLegendary ? Interface.legendary.withValues(alpha: 0.1) : Utils.backgroundAt(_fish.indexOf(fish)),
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => BuilderFish(fish: fish)));
       },
