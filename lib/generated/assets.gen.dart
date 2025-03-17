@@ -52,6 +52,10 @@ class $AssetsGraphicsFishGen {
 
   AssetGenImage get alpineBullhead => const AssetGenImage('assets/graphics/fish/alpine_bullhead.png');
 
+  AssetGenImage get amemasu => const AssetGenImage('assets/graphics/fish/amemasu.png');
+
+  AssetGenImage get amurCatfish => const AssetGenImage('assets/graphics/fish/amur_catfish.png');
+
   AssetGenImage get andalusianBarbel => const AssetGenImage('assets/graphics/fish/andalusian_barbel.png');
 
   AssetGenImage get arcticChar => const AssetGenImage('assets/graphics/fish/arctic_char.png');
@@ -59,6 +63,8 @@ class $AssetsGraphicsFishGen {
   AssetGenImage get asp => const AssetGenImage('assets/graphics/fish/asp.png');
 
   AssetGenImage get atlanticSalmon => const AssetGenImage('assets/graphics/fish/atlantic_salmon.png');
+
+  AssetGenImage get ayuSweetfish => const AssetGenImage('assets/graphics/fish/ayu_sweetfish.png');
 
   AssetGenImage get bigLarry => const AssetGenImage('assets/graphics/fish/big_larry.png');
 
@@ -82,7 +88,11 @@ class $AssetsGraphicsFishGen {
 
   AssetGenImage get channelCatfish => const AssetGenImage('assets/graphics/fish/channel_catfish.png');
 
+  AssetGenImage get cherrySalmon => const AssetGenImage('assets/graphics/fish/cherry_salmon.png');
+
   AssetGenImage get chub => const AssetGenImage('assets/graphics/fish/chub.png');
+
+  AssetGenImage get chumSalmon => const AssetGenImage('assets/graphics/fish/chum_salmon.png');
 
   AssetGenImage get comizoBarbel => const AssetGenImage('assets/graphics/fish/comizo_barbel.png');
 
@@ -94,6 +104,8 @@ class $AssetsGraphicsFishGen {
 
   AssetGenImage get cutthroatTrout => const AssetGenImage('assets/graphics/fish/cutthroat_trout.png');
 
+  AssetGenImage get dollyVardenTrout => const AssetGenImage('assets/graphics/fish/dolly_varden_trout.png');
+
   AssetGenImage get elMatador => const AssetGenImage('assets/graphics/fish/el_matador.png');
 
   AssetGenImage get europeanBullhead => const AssetGenImage('assets/graphics/fish/european_bullhead.png');
@@ -102,11 +114,15 @@ class $AssetsGraphicsFishGen {
 
   AssetGenImage get europeanPerch => const AssetGenImage('assets/graphics/fish/european_perch.png');
 
+  AssetGenImage get feralKoi => const AssetGenImage('assets/graphics/fish/feral_koi.png');
+
   AssetGenImage get freshwaterDrum => const AssetGenImage('assets/graphics/fish/freshwater_drum.png');
 
   AssetGenImage get goldenTrout => const AssetGenImage('assets/graphics/fish/golden_trout.png');
 
   AssetGenImage get goldstein => const AssetGenImage('assets/graphics/fish/goldstein.png');
+
+  AssetGenImage get gotoTheImmortal => const AssetGenImage('assets/graphics/fish/goto-the-immortal.png');
 
   AssetGenImage get grassCarp => const AssetGenImage('assets/graphics/fish/grass_carp.png');
 
@@ -118,9 +134,19 @@ class $AssetsGraphicsFishGen {
 
   AssetGenImage get ide => const AssetGenImage('assets/graphics/fish/ide.png');
 
+  AssetGenImage get japaneseDace => const AssetGenImage('assets/graphics/fish/japanese_dace.png');
+
+  AssetGenImage get japaneseEel => const AssetGenImage('assets/graphics/fish/japanese_eel.png');
+
+  AssetGenImage get japaneseFreshwaterCrab => const AssetGenImage('assets/graphics/fish/japanese_freshwater_crab.png');
+
+  AssetGenImage get japaneseSmelt => const AssetGenImage('assets/graphics/fish/japanese_smelt.png');
+
   AssetGenImage get kallePaulTheDominator => const AssetGenImage('assets/graphics/fish/kalle_paul_the_dominator.png');
 
   AssetGenImage get karooMermaid => const AssetGenImage('assets/graphics/fish/karoo_mermaid.png');
+
+  AssetGenImage get koiNoTakinobori => const AssetGenImage('assets/graphics/fish/koi-no-takinobori.png');
 
   AssetGenImage get kokaneeSalmon => const AssetGenImage('assets/graphics/fish/kokanee_salmon.png');
 
@@ -132,6 +158,8 @@ class $AssetsGraphicsFishGen {
 
   AssetGenImage get largemouthYellowfish => const AssetGenImage('assets/graphics/fish/largemouth_yellowfish.png');
 
+  AssetGenImage get magoi => const AssetGenImage('assets/graphics/fish/magoi.png');
+
   AssetGenImage get mamlambo => const AssetGenImage('assets/graphics/fish/mamlambo.png');
 
   AssetGenImage get mirrorCarp => const AssetGenImage('assets/graphics/fish/mirror_carp.png');
@@ -140,9 +168,15 @@ class $AssetsGraphicsFishGen {
 
   AssetGenImage get mountainWhitefish => const AssetGenImage('assets/graphics/fish/mountain_whitefish.png');
 
+  AssetGenImage get mozambiqueTilapia => const AssetGenImage('assets/graphics/fish/mozambique_tilapia.png');
+
   AssetGenImage get northernPike => const AssetGenImage('assets/graphics/fish/northern_pike.png');
 
+  AssetGenImage get northernSnakehead => const AssetGenImage('assets/graphics/fish/northern_snakehead.png');
+
   AssetGenImage get ohridTrout => const AssetGenImage('assets/graphics/fish/ohrid_trout.png');
+
+  AssetGenImage get pondLoach => const AssetGenImage('assets/graphics/fish/pond_loach.png');
 
   AssetGenImage get pumpkinseed => const AssetGenImage('assets/graphics/fish/pumpkinseed.png');
 
@@ -164,6 +198,8 @@ class $AssetsGraphicsFishGen {
 
   AssetGenImage get ruffe => const AssetGenImage('assets/graphics/fish/ruffe.png');
 
+  AssetGenImage get sakhalinTaimen => const AssetGenImage('assets/graphics/fish/sakhalin_taimen.png');
+
   AssetGenImage get sauger => const AssetGenImage('assets/graphics/fish/sauger.png');
 
   AssetGenImage get shovelnoseSturgeon => const AssetGenImage('assets/graphics/fish/shovelnose_sturgeon.png');
@@ -175,6 +211,8 @@ class $AssetsGraphicsFishGen {
   AssetGenImage get smallmouthBass => const AssetGenImage('assets/graphics/fish/smallmouth_bass.png');
 
   AssetGenImage get smallmouthYellowfish => const AssetGenImage('assets/graphics/fish/smallmouth_yellowfish.png');
+
+  AssetGenImage get sockeyeSalmon => const AssetGenImage('assets/graphics/fish/sockeye_salmon.png');
 
   AssetGenImage get speilfinne => const AssetGenImage('assets/graphics/fish/speilfinne.png');
 
@@ -196,6 +234,8 @@ class $AssetsGraphicsFishGen {
 
   AssetGenImage get whiteCrappie => const AssetGenImage('assets/graphics/fish/white_crappie.png');
 
+  AssetGenImage get whiteSpottedChar => const AssetGenImage('assets/graphics/fish/white_spotted_char.png');
+
   AssetGenImage get yellowPerch => const AssetGenImage('assets/graphics/fish/yellow_perch.png');
 
   AssetGenImage get zander => const AssetGenImage('assets/graphics/fish/zander.png');
@@ -206,10 +246,13 @@ class $AssetsGraphicsFishGen {
         africanTigerfish,
         alejandroMagno,
         alpineBullhead,
+        amemasu,
+        amurCatfish,
         andalusianBarbel,
         arcticChar,
         asp,
         atlanticSalmon,
+        ayuSweetfish,
         bigLarry,
         blackCrappie,
         blueKurper,
@@ -221,37 +264,51 @@ class $AssetsGraphicsFishGen {
         burbot,
         canaryKurper,
         channelCatfish,
+        cherrySalmon,
         chub,
+        chumSalmon,
         comizoBarbel,
         commonCarp,
         commonDace,
         crucianCarp,
         cutthroatTrout,
+        dollyVardenTrout,
         elMatador,
         europeanBullhead,
         europeanEel,
         europeanPerch,
+        feralKoi,
         freshwaterDrum,
         goldenTrout,
         goldstein,
+        gotoTheImmortal,
         grassCarp,
         grayling,
         greenSunfish,
         grootslang,
         ide,
+        japaneseDace,
+        japaneseEel,
+        japaneseFreshwaterCrab,
+        japaneseSmelt,
         kallePaulTheDominator,
         karooMermaid,
+        koiNoTakinobori,
         kokaneeSalmon,
         laMostrenca,
         lakeTrout,
         largemouthBass,
         largemouthYellowfish,
+        magoi,
         mamlambo,
         mirrorCarp,
         moggel,
         mountainWhitefish,
+        mozambiqueTilapia,
         northernPike,
+        northernSnakehead,
         ohridTrout,
+        pondLoach,
         pumpkinseed,
         purpleLabeo,
         rainbowTrout,
@@ -262,12 +319,14 @@ class $AssetsGraphicsFishGen {
         rockBass,
         rudd,
         ruffe,
+        sakhalinTaimen,
         sauger,
         shovelnoseSturgeon,
         sidewinder,
         signalCrayfish,
         smallmouthBass,
         smallmouthYellowfish,
+        sockeyeSalmon,
         speilfinne,
         spottedBass,
         storeHenrik,
@@ -278,6 +337,7 @@ class $AssetsGraphicsFishGen {
         walleye,
         welsCatfish,
         whiteCrappie,
+        whiteSpottedChar,
         yellowPerch,
         zander
       ];
@@ -500,11 +560,13 @@ class $AssetsGraphicsReservesGen {
 
   AssetGenImage get iziloZasendulo => const AssetGenImage('assets/graphics/reserves/izilo_zasendulo.png');
 
+  AssetGenImage get kamuibetsu => const AssetGenImage('assets/graphics/reserves/kamuibetsu.png');
+
   AssetGenImage get trollsporetNatureReserve =>
       const AssetGenImage('assets/graphics/reserves/trollsporet_nature_reserve.png');
 
   List<AssetGenImage> get values =>
-      [aguasClarasMunicipio, goldenRidgeReserve, iziloZasendulo, trollsporetNatureReserve];
+      [aguasClarasMunicipio, goldenRidgeReserve, iziloZasendulo, kamuibetsu, trollsporetNatureReserve];
 }
 
 class $AssetsRawMapsGen {
@@ -516,9 +578,12 @@ class $AssetsRawMapsGen {
 
   String get iziloZasendulo => 'assets/raw/maps/izilo-zasendulo.json';
 
+  String get kamuibetsu => 'assets/raw/maps/kamuibetsu.json';
+
   String get trollsporetNatureReserve => 'assets/raw/maps/trollsporet-nature-reserve.json';
 
-  List<String> get values => [aguasClarasMunicipio, goldenRidgeReserve, iziloZasendulo, trollsporetNatureReserve];
+  List<String> get values =>
+      [aguasClarasMunicipio, goldenRidgeReserve, iziloZasendulo, kamuibetsu, trollsporetNatureReserve];
 }
 
 class Assets {
@@ -529,11 +594,16 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName, {this.size = null});
+  const AssetGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  });
 
   final String _assetName;
 
   final Size? size;
+  final Set<String> flavors;
 
   Image image({
     Key? key,
@@ -553,7 +623,7 @@ class AssetGenImage {
     ImageRepeat repeat = ImageRepeat.noRepeat,
     Rect? centerSlice,
     bool matchTextDirection = false,
-    bool gaplessPlayback = false,
+    bool gaplessPlayback = true,
     bool isAntiAlias = false,
     String? package,
     FilterQuality filterQuality = FilterQuality.low,

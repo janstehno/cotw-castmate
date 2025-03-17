@@ -6,7 +6,8 @@ class Graphics {
     "RESERVE:GOLDEN_RIDGE_RESERVE": Assets.graphics.reserves.goldenRidgeReserve.path,
     "RESERVE:TROLLSPORET_NATURE_RESERVE": Assets.graphics.reserves.trollsporetNatureReserve.path,
     "RESERVE:AGUAS_CLARAS_MUNICIPIO": Assets.graphics.reserves.aguasClarasMunicipio.path,
-    "RESERVE:IZILO_ZASENDULO": Assets.graphics.reserves.iziloZasendulo.path
+    "RESERVE:IZILO_ZASENDULO": Assets.graphics.reserves.iziloZasendulo.path,
+    "RESERVE:KAMUIBETSU": Assets.graphics.reserves.kamuibetsu.path,
   };
 
   static final Map<String, String> _fish = {
@@ -89,6 +90,26 @@ class Graphics {
     "FISH:MAMLAMBO": Assets.graphics.fish.mamlambo.path,
     "FISH:CARPIODES_CARPIO": Assets.graphics.fish.riverCarpsucker.path,
     "FISH:PACIFASTACUS_LENIUSCULUS": Assets.graphics.fish.signalCrayfish.path,
+    "FISH:AMEMASU": Assets.graphics.fish.amemasu.path,
+    "FISH:ANGUILLA_JAPONICA": Assets.graphics.fish.japaneseEel.path,
+    "FISH:CHANNA_ARGUS": Assets.graphics.fish.northernSnakehead.path,
+    "FISH:CYPRINUS_CARPIO_2": Assets.graphics.fish.magoi.path,
+    "FISH:CYPRINUS_RUBROFUSCUS": Assets.graphics.fish.feralKoi.path,
+    "FISH:GEOTHELPHUSA_DEHAANI": Assets.graphics.fish.japaneseFreshwaterCrab.path,
+    "FISH:GOTO_THE_IMMORTAL": Assets.graphics.fish.gotoTheImmortal.path,
+    "FISH:HYPOMESUS_NIPPONENSIS": Assets.graphics.fish.japaneseSmelt.path,
+    "FISH:KOI_NO_TAKINOBORI": Assets.graphics.fish.koiNoTakinobori.path,
+    "FISH:MISGURNUS_ANGUILLICAUDATUS": Assets.graphics.fish.pondLoach.path,
+    "FISH:ONCORHYNCHUS_KETA": Assets.graphics.fish.chumSalmon.path,
+    "FISH:ONCORHYNCHUS_MASOU": Assets.graphics.fish.cherrySalmon.path,
+    "FISH:ONCORHYNCHUS_NERKA_2": Assets.graphics.fish.sockeyeSalmon.path,
+    "FISH:OREOCHROMIS_MOSSAMBICUS_2": Assets.graphics.fish.mozambiqueTilapia.path,
+    "FISH:PARAHUCHO_PERRYI": Assets.graphics.fish.sakhalinTaimen.path,
+    "FISH:PLECOGLOSSUS_ALTIVELIS": Assets.graphics.fish.ayuSweetfish.path,
+    "FISH:PSEUDASPIUS_HAKONENSIS": Assets.graphics.fish.japaneseDace.path,
+    "FISH:SALVELINUS_LEUCOMAENIS": Assets.graphics.fish.whiteSpottedChar.path,
+    "FISH:SALVELINUS_MALMA": Assets.graphics.fish.dollyVardenTrout.path,
+    "FISH:SILURUS_ASOTUS": Assets.graphics.fish.amurCatfish.path,
   };
 
   static final Map<String, String> _location = {
