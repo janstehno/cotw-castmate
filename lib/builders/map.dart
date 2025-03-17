@@ -28,6 +28,7 @@ class BuilderMapState extends BuilderBuilderState {
     "RESERVE:TROLLSPORET_NATURE_RESERVE": Assets.raw.maps.trollsporetNatureReserve,
     "RESERVE:AGUAS_CLARAS_MUNICIPIO": Assets.raw.maps.aguasClarasMunicipio,
     "RESERVE:IZILO_ZASENDULO": Assets.raw.maps.iziloZasendulo,
+    "RESERVE:KAMUIBETSU": Assets.raw.maps.kamuibetsu,
   };
 
   @override

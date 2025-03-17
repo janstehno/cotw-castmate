@@ -3,6 +3,7 @@ enum MapRegion {
   trollsporetNatureReserve,
   aguasClarasMunicipio,
   iziloZasendulo,
+  kamuibetsu,
 }
 
 enum ProcessType {

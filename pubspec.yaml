@@ -77,6 +77,9 @@ flutter:
     - assets/graphics/maps/izilozasendulo/1/
     - assets/graphics/maps/izilozasendulo/2/
     - assets/graphics/maps/izilozasendulo/3/
+    - assets/graphics/maps/kamuibetsu/1/
+    - assets/graphics/maps/kamuibetsu/2/
+    - assets/graphics/maps/kamuibetsu/3/
   fonts:
     - family: Normal
       fonts:
