@@ -60,23 +60,25 @@ abstract class BuilderBuilderState extends State<BuilderBuilder> {
   Widget _buildLoadingWidget() {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Expanded(
-            child: Stack(
-              children: [
-                _buildLoadingBackground(),
-                _buildShadow(),
-                const Positioned(
-                  right: 0,
-                  bottom: 0,
-                  child: WidgetLoadingIndicator(),
-                ),
-              ],
+      body: SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Expanded(
+              child: Stack(
+                children: [
+                  _buildLoadingBackground(),
+                  _buildShadow(),
+                  const Positioned(
+                    right: 0,
+                    bottom: 0,
+                    child: WidgetLoadingIndicator(),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

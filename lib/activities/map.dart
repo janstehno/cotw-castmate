@@ -284,13 +284,15 @@ class ActivityMapState extends State<ActivityMap> {
     _getTileSize(orientation);
     return Scaffold(
       appBar: AppBar(),
-      body: Container(
-        color: Interface.primaryDark,
-        child: Column(
-          children: [
-            Expanded(child: _buildMap(orientation)),
-            _buildMenu(),
-          ],
+      body: SafeArea(
+        child: Container(
+          color: Interface.primaryDark,
+          child: Column(
+            children: [
+              Expanded(child: _buildMap(orientation)),
+              _buildMenu(),
+            ],
+          ),
         ),
       ),
     );

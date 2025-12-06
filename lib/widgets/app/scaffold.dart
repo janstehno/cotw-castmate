@@ -78,7 +78,9 @@ class WidgetScaffold extends StatelessWidget {
       appBar: AppBar(),
       extendBody: true,
       backgroundColor: Interface.transparent,
-      body: _buildBody(context),
+      body: SafeArea(
+        child: _buildBody(context),
+      ),
     );
   }
 
